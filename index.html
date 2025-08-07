@@ -10,7 +10,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="profile">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-button">Front Page</a>
+            <a href="#about" class="nav-button">About</a>
+            <a href="#work" class="nav-button">Work</a>
+            <a href="#publications" class="nav-button">Publications</a>
+            <a href="#connect" class="nav-button">Connect</a>
+        </div>
+    </nav>
+
+    <header class="profile" id="home">
         <img src="profile.jpg" alt="Henrique Oliveira" class="profile-pic">
         <div class="profile-text">
             <h1>Henrique Oliveira</h1>
@@ -20,24 +30,37 @@
         </div>        
     </header>    
     
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/henrique-de-mello-oliveira-6b8718239/" class="social-button">
-            <img src="linkedin.png" alt="LinkedIn"> LinkedIn
-        </a>
-        <a href="https://github.com/henryxoliveira" class="social-button">
-            <img src="github.png" alt="GitHub"> GitHub
-        </a>
-        <a href="https://substack.com/@growingexponentially?utm_campaign=unknown&utm_medium=web" class="social-button">
-            <img src="substack.png" alt="Substack"> Substack
-        </a>
-        <a href="holiveira@scu.edu" class="social-button">
-            <img src="email.png" alt="Email"> Email
-        </a>
-    </div>
-
     <section id="about">
         <h2>About Me</h2>
         <p>I'm an undergraduate student passionate for companies looking to change the world. I write about growth, scaling, VC, and tech from the perspective of an aspiring entrepreneur. I also give advice for other students looking to succeed in this path.</p>
+    </section>
+
+    <section id="work">
+        <h2>Work Experience</h2>
+        <p>Currently recruiting for internships in technology investing or product management. I'm passionate about guiding the development of software solutions looking to change the world.</p>
+    </section>
+
+    <section id="publications">
+        <h2>Publications</h2>
+        <p>I write about growth, scaling, VC, and tech from the perspective of an aspiring entrepreneur. Check out my <a href="https://substack.com/@growingexponentially?utm_campaign=unknown&utm_medium=web" target="_blank">Substack</a> for my latest articles.</p>
+    </section>
+
+    <section id="connect">
+        <h2>Connect</h2>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/henrique-de-mello-oliveira-6b8718239/" class="social-button">
+                <img src="linkedin.png" alt="LinkedIn"> LinkedIn
+            </a>
+            <a href="https://github.com/henryxoliveira" class="social-button">
+                <img src="github.png" alt="GitHub"> GitHub
+            </a>
+            <a href="https://substack.com/@growingexponentially?utm_campaign=unknown&utm_medium=web" class="social-button">
+                <img src="substack.png" alt="Substack"> Substack
+            </a>
+            <a href="mailto:holiveira@scu.edu" class="social-button">
+                <img src="email.png" alt="Email"> Email
+            </a>
+        </div>
     </section>
 
     <footer>

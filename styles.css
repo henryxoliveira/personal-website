@@ -11,8 +11,43 @@ body {
     align-items: center; /* Centers everything horizontally */
     justify-content: center;
     min-height: 100vh;
+    padding-top: 80px; /* Add space for fixed navbar */
 }
 
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.nav-button {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    background: transparent;
+}
+
+.nav-button:hover {
+    background: #f0f0f0;
+    color: #000;
+}
 
 
 header {
