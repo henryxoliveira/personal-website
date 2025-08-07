@@ -57,23 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
-    // Check for saved dark mode preference
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === 'enabled') {
+    // Check for saved preference, default to dark mode if no preference saved
+    const lightMode = localStorage.getItem('lightMode');
+    if (lightMode !== 'enabled') {
         body.classList.add('dark-mode');
         darkModeToggle.classList.add('active');
     }
     
-    // Toggle dark mode
+    // Toggle between dark and light mode
     darkModeToggle.addEventListener('click', function() {
         body.classList.toggle('dark-mode');
         darkModeToggle.classList.toggle('active');
         
-        // Save preference
+        // Save preference (inverted logic - we save light mode preference)
         if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', 'enabled');
+            localStorage.setItem('lightMode', 'disabled');
         } else {
-            localStorage.setItem('darkMode', 'disabled');
+            localStorage.setItem('lightMode', 'enabled');
         }
     });
 });
