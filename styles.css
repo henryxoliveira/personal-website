@@ -71,6 +71,96 @@ body {
     transform: translateX(0%);
 }
 
+.dark-mode-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 0;
+}
+
+.toggle-switch.active {
+    background: #666;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(26px);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+    background: rgba(26, 26, 26, 0.95);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .nav-button {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-button:hover {
+    background: #333;
+    color: #fff;
+}
+
+body.dark-mode .nav-button.active {
+    background: #e0e0e0;
+    color: #1a1a1a;
+}
+
+body.dark-mode section {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .social-button {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-button:hover {
+    background: #444;
+}
+
+body.dark-mode .scroll-indicator {
+    background: #333;
+}
+
+body.dark-mode .indicator-tab {
+    background: #e0e0e0;
+}
+
+body.dark-mode footer {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
 
 header {
     text-align: center;
