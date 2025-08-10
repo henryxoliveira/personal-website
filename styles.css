@@ -5,6 +5,7 @@ body {
     font-optical-sizing: auto;
     letter-spacing: 0.5px;
     line-height: 1.6;
+    font-size: 18px; /* Increased base font size */
 
     display: flex;
     flex-direction: column;
@@ -201,13 +202,23 @@ nav ul li a {
 section {
     width: 60%;
     max-width: 800px;
-    margin: 40px 0;
-    padding: 25px;
+    margin: 80px 0; /* Increased from 40px to create more spacing */
+    padding: 40px; /* Increased from 25px */
     text-align: left; /* Keeps text aligned while centering section */
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
+}
+
+section h2 {
+    font-size: 2.5em; /* Added larger heading size */
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1em; /* Increased paragraph size */
+    line-height: 1.7; /* Increased line height */
 }
 
 footer {
@@ -225,7 +236,7 @@ footer {
     gap: 20px; /* Adds space between image and text */
     width: 60%;
     max-width: 800px;
-    margin: 30px auto 5px auto; /* Reduce bottom margin */
+    margin: 60px auto 40px auto; /* Increased top and bottom margins */
     flex-direction: row; /* Ensures left-to-right layout */
 }
 
@@ -236,15 +247,15 @@ footer {
 }
 
 .profile h1 {
-    font-size: 2.2em;
+    font-size: 3.2em; /* Increased from 2.2em */
     font-weight: bold;
     margin: 0;
 }
 
 .profile p {
-    font-size: 0.95em;
+    font-size: 1.2em; /* Increased from 0.95em */
     color: #555;
-    margin: 5px 0;
+    margin: 8px 0; /* Increased margin */
 }
 
 .profile-pic {
@@ -268,9 +279,9 @@ footer {
     gap: 8px;
     text-decoration: none;
     color: #333;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased from 1rem */
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 12px 16px; /* Increased padding */
     border-radius: 8px;
     background: #f5f5f5;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
