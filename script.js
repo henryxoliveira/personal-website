@@ -18,16 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to update indicator position
     function updateIndicator() {
-        const scrollPosition = window.scrollY + 100; // Offset for navbar
+        const scrollPosition = window.scrollY + window.innerHeight / 2; // Use center of viewport
         
-        // Find which section is currently in view
+        // Find which section is currently in the center of the viewport
         let currentSection = 'home';
         
         for (let i = sections.length - 1; i >= 0; i--) {
             const section = document.getElementById(sections[i]);
-            if (section && section.offsetTop <= scrollPosition) {
-                currentSection = sections[i];
-                break;
+            if (section) {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                    currentSection = sections[i];
+                    break;
+                }
             }
         }
         
@@ -35,18 +40,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const sectionIndex = sections.indexOf(currentSection);
         const translateX = sectionIndex * 20;
         
-        // Update indicator position
+        // Update indicator position with smooth transition
         indicator.style.transform = `translateX(${translateX}%)`;
         
         // Update active nav button
         document.querySelectorAll('.nav-button').forEach(btn => {
             btn.classList.remove('active');
         });
-        document.querySelector(`[href="#${currentSection}"]`).classList.add('active');
+        const activeButton = document.querySelector(`[href="#${currentSection}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
     }
     
-    // Add scroll event listener
-    window.addEventListener('scroll', updateIndicator);
+    // Add scroll event listener with throttling for better performance
+    let ticking = false;
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateIndicator);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
     
     // Initial call to set correct position
     updateIndicator();

@@ -10,9 +10,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers everything horizontally */
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to flex-start */
     min-height: 100vh;
     padding-top: 80px; /* Add space for fixed navbar */
+    scroll-snap-type: y mandatory; /* Enable scroll snapping */
+    overflow-y: auto;
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
 .navbar {
@@ -202,13 +209,18 @@ nav ul li a {
 section {
     width: 60%;
     max-width: 800px;
-    margin: 80px 0; /* Increased from 40px to create more spacing */
+    margin: 0 auto; /* Center sections */
     padding: 40px; /* Increased from 25px */
     text-align: left; /* Keeps text aligned while centering section */
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
+    scroll-snap-align: center; /* Snap to center */
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
 }
 
 section h2 {
@@ -236,8 +248,11 @@ footer {
     gap: 20px; /* Adds space between image and text */
     width: 60%;
     max-width: 800px;
-    margin: 60px auto 40px auto; /* Increased top and bottom margins */
+    margin: 0 auto; /* Changed to center the profile section */
     flex-direction: row; /* Ensures left-to-right layout */
+    scroll-snap-align: center; /* Snap to center */
+    min-height: 100vh; /* Full viewport height */
+    padding: 40px 0; /* Add padding for spacing */
 }
 
 
