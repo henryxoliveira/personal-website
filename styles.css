@@ -140,6 +140,12 @@ body.dark-mode section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+body.dark-mode .profile {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 body.dark-mode .social-button {
     background: #333;
     color: #e0e0e0;
@@ -209,7 +215,7 @@ nav ul li a {
 section {
     width: 60%;
     max-width: 800px;
-    margin: 0 auto; /* Center sections */
+    margin: 20px auto; /* Add margin between sections */
     padding: 40px; /* Increased from 25px */
     text-align: left; /* Keeps text aligned while centering section */
     background: white;
@@ -217,7 +223,7 @@ section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
     scroll-snap-align: start; /* Snap to start */
-    height: 100vh; /* Full viewport height */
+    min-height: 80vh; /* Reduced from 100vh to allow spacing */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
@@ -248,11 +254,14 @@ footer {
     gap: 20px; /* Adds space between image and text */
     width: 60%;
     max-width: 800px;
-    margin: 0 auto; /* Changed to center the profile section */
+    margin: 20px auto; /* Add margin for spacing */
     flex-direction: row; /* Ensures left-to-right layout */
     scroll-snap-align: start; /* Snap to start */
-    height: 100vh; /* Full viewport height */
-    padding: 40px 0; /* Add padding for spacing */
+    min-height: 80vh; /* Reduced from 100vh to allow spacing */
+    padding: 40px; /* Add padding for spacing */
+    background: white; /* Add background to make it a box */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
 }
 
 
