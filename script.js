@@ -15,10 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     const indicator = document.getElementById('indicator');
     const sections = ['home', 'about', 'work', 'publications', 'connect'];
+    const scrollContainer = document.querySelector('.scroll-container');
     
     // Function to update indicator position
     function updateIndicator() {
-        const scrollPosition = window.scrollY + window.innerHeight / 2; // Use center of viewport
+        const scrollPosition = scrollContainer.scrollTop + scrollContainer.clientHeight / 2;
         
         // Find which section is currently in the center of the viewport
         let currentSection = 'home';
@@ -53,16 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Add scroll event listener with throttling for better performance
-    let ticking = false;
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateIndicator);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick);
+    // Add scroll event listener to the scroll container
+    scrollContainer.addEventListener('scroll', updateIndicator);
     
     // Initial call to set correct position
     updateIndicator();

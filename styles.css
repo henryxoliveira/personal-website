@@ -6,16 +6,9 @@ body {
     letter-spacing: 0.5px;
     line-height: 1.6;
     font-size: 18px; /* Increased base font size */
-
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers everything horizontally */
-    justify-content: flex-start; /* Changed from center to flex-start */
-    min-height: 100vh;
-    padding-top: 80px; /* Add space for fixed navbar */
-    scroll-snap-type: y mandatory; /* Enable scroll snapping */
-    overflow-y: auto;
-    scroll-behavior: smooth; /* Smooth scrolling */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 html {
@@ -206,6 +199,13 @@ nav ul li a {
     color: blue;
 }
 
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    padding-top: 80px; /* Space for fixed navbar */
+}
+
 section {
     width: 60%;
     max-width: 800px;
@@ -216,8 +216,8 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
-    scroll-snap-align: center; /* Snap to center */
-    min-height: 100vh; /* Full viewport height */
+    scroll-snap-align: start; /* Snap to start */
+    height: 100vh; /* Full viewport height */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
@@ -250,8 +250,8 @@ footer {
     max-width: 800px;
     margin: 0 auto; /* Changed to center the profile section */
     flex-direction: row; /* Ensures left-to-right layout */
-    scroll-snap-align: center; /* Snap to center */
-    min-height: 100vh; /* Full viewport height */
+    scroll-snap-align: start; /* Snap to start */
+    height: 100vh; /* Full viewport height */
     padding: 40px 0; /* Add padding for spacing */
 }
 
