@@ -9,105 +9,133 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: #f5f5f5;
 }
 
 html {
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
+/* Navigation Header Styles */
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(245, 245, 245, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #e0e0e0;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 20px 0;
 }
 
 .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
+    gap: 40px;
+    position: relative;
+    max-width: 1000px;
     margin: 0 auto;
-    gap: 20px;
 }
 
-.nav-button {
+.nav-link {
     text-decoration: none;
     color: #333;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 6px;
-    transition: all 0.2s ease-in-out;
-    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer;
 }
 
-.nav-button:hover {
-    background: #f0f0f0;
+.nav-link:hover {
     color: #000;
 }
 
-.nav-button.active {
-    background: #333;
-    color: white;
-}
-
-.scroll-indicator {
+.nav-link::after {
+    content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
     width: 100%;
-    height: 3px;
-    background: #e0e0e0;
 }
 
-.indicator-tab {
-    height: 100%;
-    background: #333;
-    width: 20%;
-    transition: transform 0.3s ease;
-    transform: translateX(0%);
+.nav-link.hover::after {
+    width: 100%;
 }
 
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: -5px;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+    width: 0;
+}
+
+/* Dark Mode Toggle Button */
 .dark-mode-toggle {
     position: absolute;
-    top: 15px;
+    top: 50%;
     right: 20px;
-}
-
-.toggle-switch {
-    position: relative;
-    width: 50px;
-    height: 24px;
-    background: #ccc;
-    border-radius: 12px;
+    transform: translateY(-50%);
+    background: none;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease;
-    padding: 0;
-}
-
-.toggle-switch.active {
-    background: #666;
-}
-
-.toggle-slider {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    background: white;
+    padding: 8px;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
 }
 
-.toggle-switch.active .toggle-slider {
-    transform: translateX(26px);
+.dark-mode-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
+
+.dark-mode-toggle .sun-icon,
+.dark-mode-toggle .moon-icon {
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle .moon-icon {
+    display: none;
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+    display: none;
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    display: block;
+}
+
+body.dark-mode .dark-mode-toggle {
+    color: #e0e0e0;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 
 /* Dark mode styles */
 body.dark-mode {
@@ -120,30 +148,25 @@ body.dark-mode .navbar {
     border-bottom: 1px solid #333;
 }
 
-body.dark-mode .nav-button {
+body.dark-mode .nav-link {
     color: #e0e0e0;
 }
 
-body.dark-mode .nav-button:hover {
-    background: #333;
+body.dark-mode .nav-link:hover {
     color: #fff;
 }
 
-body.dark-mode .nav-button.active {
-    background: #e0e0e0;
-    color: #1a1a1a;
+body.dark-mode .nav-link::after,
+body.dark-mode .nav-indicator {
+    background-color: #e0e0e0;
 }
 
 body.dark-mode section {
-    background: #2a2a2a;
     color: #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .profile {
-    background: #2a2a2a;
     color: #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .social-button {
@@ -181,52 +204,55 @@ body.dark-mode .profile p {
     color: #d0d0d0;
 }
 
+body.dark-mode .section-header {
+    color: #e0e0e0;
+    border-bottom-color: #e0e0e0;
+}
+
+/* Dark mode styles for profile section */
+body.dark-mode .profile-section h1 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .profile-section p {
+    color: #d0d0d0;
+}
+
 
 header {
     text-align: center;
     width: 100%;
-    padding: 50px 0;
-    background: #fff;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
     padding: 0;
+    background: transparent;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
 
-nav ul li a {
-    text-decoration: none;
-    color: blue;
-}
 
 .scroll-container {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    padding-top: 80px; /* Space for fixed navbar */
+    padding-top: 0; /* No padding needed since hero is full height */
+}
+
+/* Section headers */
+.section-header {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    border-bottom: 3px solid #333;
+    padding-bottom: 15px;
 }
 
 section {
     width: 60%;
     max-width: 800px;
-    margin: 20px auto; /* Add margin between sections */
-    padding: 40px; /* Increased from 25px */
-    text-align: left; /* Keeps text aligned while centering section */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    padding: 40px 40px;
     text-align: left;
-    scroll-snap-align: start; /* Snap to start */
-    min-height: 80vh; /* Reduced from 100vh to allow spacing */
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
 }
 
 section h2 {
@@ -247,21 +273,29 @@ footer {
     color: white;
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Aligns text to the left */
-    gap: 20px; /* Adds space between image and text */
+.hero {
+    width: 100%;
+    height: 60vh;
+    background-image: url('./pexels-florencia-potter-82066-351283.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.profile-section {
     width: 60%;
     max-width: 800px;
-    margin: 20px auto; /* Add margin for spacing */
-    flex-direction: row; /* Ensures left-to-right layout */
-    scroll-snap-align: start; /* Snap to start */
-    min-height: 80vh; /* Reduced from 100vh to allow spacing */
-    padding: 40px; /* Add padding for spacing */
-    background: white; /* Add background to make it a box */
-    border-radius: 8px; /* Add rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+    margin: 0 auto;
+    padding: 60px 40px;
+    background: transparent;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
 }
 
 
@@ -270,24 +304,26 @@ footer {
     text-align: left; /* Ensures text is left-aligned */
 }
 
-.profile h1 {
-    font-size: 3.2em; /* Increased from 2.2em */
+.profile-section h1 {
+    font-size: 3.2em;
     font-weight: bold;
-    margin: 0;
+    margin: 0 0 20px 0;
+    color: #333;
 }
 
-.profile p {
-    font-size: 1.2em; /* Increased from 0.95em */
+.profile-section p {
+    font-size: 1.2em;
     color: #555;
-    margin: 8px 0; /* Increased margin */
+    margin: 12px 0;
+    line-height: 1.6;
 }
 
 .profile-pic {
-    width: 210px; /* Increase size */
-    height: 210px;
-    border-radius: 0; /* Remove circular shape */
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
     object-fit: cover;
-    margin-right: 20px; /* Add spacing between image and text */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .social-links {

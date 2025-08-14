@@ -10,52 +10,73 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Navigation Header -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-button">Front Page</a>
-            <a href="#about" class="nav-button">About</a>
-            <a href="#work" class="nav-button">Work</a>
-            <a href="#publications" class="nav-button">Publications</a>
-            <a href="#connect" class="nav-button">Connect</a>
+            <a href="#home" class="nav-link" data-section="home">HOME</a>
+            <a href="#about" class="nav-link" data-section="about">ABOUT</a>
+            <a href="#work" class="nav-link" data-section="work">WORK</a>
+            <a href="#publications" class="nav-link" data-section="publications">PUBLICATIONS</a>
+            <a href="#connect" class="nav-link" data-section="connect">CONNECT</a>
+            <div class="nav-indicator"></div>
         </div>
-        <div class="dark-mode-toggle">
-            <button id="darkModeToggle" class="toggle-switch">
-                <span class="toggle-slider"></span>
-            </button>
-        </div>
-        <div class="scroll-indicator">
-            <div class="indicator-tab" id="indicator"></div>
-        </div>
+        
+        <!-- Dark Mode Toggle Button -->
+        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
     </nav>
 
     <div class="scroll-container">
-        <header class="profile" id="home">
-            <img src="profile.jpg" alt="Henrique Oliveira" class="profile-pic">
-            <div class="profile-text">
-                <h1>Henrique Oliveira</h1>
-                <p>Business & Computer Science Student</p>
-                <p>Passionate about guiding the development of software solutions looking to change the world.</p>
-                <p>Currently recruiting for internships in technology investing or product management.</p>
+        <!-- Hero Section with Background Image -->
+        <section class="hero" id="home">
+            <!-- Just the background image, no content -->
+        </section>
+        
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-content">
+                <img src="profile.jpg" alt="Henrique Oliveira" class="profile-pic">
+                <div class="profile-text">
+                    <h1>Henrique Oliveira</h1>
+                    <p>Business & Computer Science Student</p>
+                    <p>Passionate about guiding the development of software solutions looking to change the world.</p>
+                    <p>Currently recruiting for internships in technology investing or product management.</p>
+                </div>
             </div>        
-        </header>    
+        </section>    
         
         <section id="about">
-            <h2>About Me</h2>
+            <h1 class="section-header">About Me</h1>
             <p>I'm an undergraduate student passionate for companies looking to change the world. I write about growth, scaling, VC, and tech from the perspective of an aspiring entrepreneur. I also give advice for other students looking to succeed in this path.</p>
         </section>
 
         <section id="work">
-            <h2>Work Experience</h2>
+            <h1 class="section-header">Work Experience</h1>
             <p>Currently recruiting for internships in technology investing or product management. I'm passionate about guiding the development of software solutions looking to change the world.</p>
         </section>
 
         <section id="publications">
-            <h2>Publications</h2>
+            <h1 class="section-header">Publications</h1>
             <p>I write about growth, scaling, VC, and tech from the perspective of an aspiring entrepreneur. Check out my <a href="https://substack.com/@growingexponentially?utm_campaign=unknown&utm_medium=web" target="_blank">Substack</a> for my latest articles.</p>
         </section>
 
         <section id="connect">
-            <h2>Connect</h2>
+            <h1 class="section-header">Connect</h1>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/henrique-de-mello-oliveira-6b8718239/" class="social-button">
                     <img src="linkedin.png" alt="LinkedIn"> LinkedIn

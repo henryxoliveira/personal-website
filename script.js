@@ -1,88 +1,130 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.createElement("button");
-    toggleButton.innerText = "Toggle Dark Mode";
-    toggleButton.style.position = "fixed";
-    toggleButton.style.top = "10px";
-    toggleButton.style.right = "10px";
-    document.body.appendChild(toggleButton);
-
-    toggleButton.addEventListener("click", function() {
-        document.body.classList.toggle("dark-mode");
-    });
-});
-
-// Scroll indicator functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const indicator = document.getElementById('indicator');
-    const sections = ['home', 'about', 'work', 'publications', 'connect'];
-    const scrollContainer = document.querySelector('.scroll-container');
-    
-    // Function to update indicator position
-    function updateIndicator() {
-        const scrollPosition = scrollContainer.scrollTop + scrollContainer.clientHeight / 2;
-        
-        // Find which section is currently in the center of the viewport
-        let currentSection = 'home';
-        
-        for (let i = sections.length - 1; i >= 0; i--) {
-            const section = document.getElementById(sections[i]);
-            if (section) {
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-                    currentSection = sections[i];
-                    break;
-                }
-            }
-        }
-        
-        // Calculate indicator position (20% width per section)
-        const sectionIndex = sections.indexOf(currentSection);
-        const translateX = sectionIndex * 20;
-        
-        // Update indicator position with smooth transition
-        indicator.style.transform = `translateX(${translateX}%)`;
-        
-        // Update active nav button
-        document.querySelectorAll('.nav-button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        const activeButton = document.querySelector(`[href="#${currentSection}"]`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
-    }
-    
-    // Add scroll event listener to the scroll container
-    scrollContainer.addEventListener('scroll', updateIndicator);
-    
-    // Initial call to set correct position
-    updateIndicator();
-});
-
 // Dark mode toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
-    // Check for saved preference, default to dark mode if no preference saved
-    const lightMode = localStorage.getItem('lightMode');
-    if (lightMode !== 'enabled') {
+    // Check for saved preference, default to light mode if no preference saved
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'enabled') {
         body.classList.add('dark-mode');
-        darkModeToggle.classList.add('active');
     }
     
     // Toggle between dark and light mode
     darkModeToggle.addEventListener('click', function() {
         body.classList.toggle('dark-mode');
-        darkModeToggle.classList.toggle('active');
         
-        // Save preference (inverted logic - we save light mode preference)
+        // Save preference
         if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('lightMode', 'disabled');
+            localStorage.setItem('darkMode', 'enabled');
         } else {
-            localStorage.setItem('lightMode', 'enabled');
+            localStorage.setItem('darkMode', 'disabled');
         }
     });
 });
+
+// Navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navIndicator = document.querySelector('.nav-indicator');
+    const sections = ['home', 'about', 'work', 'publications', 'connect'];
+    
+    let currentSection = 'home';
+    let isHovering = false;
+    let hoveredLink = null;
+    
+    // Function to update active section based on scroll position
+    function updateActiveSection() {
+        if (isHovering) return; // Don't update if hovering
+        
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        let bestSection = 'home';
+        let bestScore = 0;
+        
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+                const score = visibleHeight / section.offsetHeight;
+                
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestSection = sectionId;
+                }
+            }
+        });
+        
+        if (bestSection !== currentSection) {
+            currentSection = bestSection;
+            updateIndicator();
+        }
+    }
+    
+    // Function to update the indicator position
+    function updateIndicator() {
+        const activeLink = document.querySelector(`[data-section="${currentSection}"]`);
+        if (activeLink && !isHovering) {
+            const linkRect = activeLink.getBoundingClientRect();
+            const containerRect = document.querySelector('.nav-container').getBoundingClientRect();
+            
+            const leftPosition = linkRect.left - containerRect.left;
+            const width = linkRect.width;
+            
+            navIndicator.style.left = leftPosition + 'px';
+            navIndicator.style.width = width + 'px';
+        }
+    }
+    
+    // Add hover event listeners
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            isHovering = true;
+            hoveredLink = this;
+            
+            // Show hover line
+            this.classList.add('hover');
+            
+            // Hide the main indicator
+            navIndicator.style.width = '0';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            isHovering = false;
+            hoveredLink = null;
+            
+            // Hide hover line
+            this.classList.remove('hover');
+            
+            // Show the main indicator again
+            updateIndicator();
+        });
+        
+        // Add click event listeners
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-section');
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+                currentSection = targetId;
+                
+                // Update indicator after scroll
+                setTimeout(() => {
+                    updateIndicator();
+                }, 100);
+            }
+        });
+    });
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', updateActiveSection);
+    
+    // Initial setup
+    updateActiveSection();
+    updateIndicator();
+});
+
+
