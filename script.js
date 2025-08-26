@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const navIndicator = document.querySelector('.nav-indicator');
-    const sections = ['home', 'about', 'work', 'publications', 'connect'];
+    const sections = ['home', 'about', 'work', 'projects', 'publications', 'connect'];
     
     let currentSection = 'home';
     let isHovering = false;
@@ -65,25 +65,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         
-        let bestSection = 'home';
-        let bestScore = 0;
+        // Use scroll position to determine active section
+        let newSection = 'home';
         
-        sections.forEach(sectionId => {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                const rect = section.getBoundingClientRect();
-                const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
-                const score = visibleHeight / section.offsetHeight;
-                
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestSection = sectionId;
-                }
-            }
-        });
+        // Get section positions
+        const homeSection = document.getElementById('home');
+        const aboutSection = document.getElementById('about');
+        const workSection = document.getElementById('work');
+        const projectsSection = document.getElementById('projects');
+        const publicationsSection = document.getElementById('publications');
+        const connectSection = document.getElementById('connect');
         
-        if (bestSection !== currentSection) {
-            currentSection = bestSection;
+        // Calculate section boundaries
+        const homeBottom = homeSection ? homeSection.offsetTop + homeSection.offsetHeight : 0;
+        const aboutBottom = aboutSection ? aboutSection.offsetTop + aboutSection.offsetHeight : 0;
+        const workBottom = workSection ? workSection.offsetTop + workSection.offsetHeight : 0;
+        const projectsBottom = projectsSection ? projectsSection.offsetTop + projectsSection.offsetHeight : 0;
+        const publicationsBottom = publicationsSection ? publicationsSection.offsetTop + publicationsSection.offsetHeight : 0;
+        
+        // Determine active section based on scroll position
+        const scrollMiddle = scrollY + (windowHeight / 2);
+        
+        if (scrollMiddle < homeBottom) {
+            newSection = 'home';
+        } else if (scrollMiddle < aboutBottom) {
+            newSection = 'about';
+        } else if (scrollMiddle < workBottom) {
+            newSection = 'work';
+        } else if (scrollMiddle < projectsBottom) {
+            newSection = 'projects';
+        } else if (scrollMiddle < publicationsBottom) {
+            newSection = 'publications';
+        } else {
+            newSection = 'connect';
+        }
+        
+        if (newSection !== currentSection) {
+            currentSection = newSection;
             updateIndicator();
         }
     }
@@ -163,6 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add scroll event listener (only for main page)
     if (!isSubpage) {
+        console.log('JavaScript is running!'); // Simple test
+        console.log('Current page:', window.location.pathname);
+        
         window.addEventListener('scroll', updateActiveSection);
         
         // Initial setup
@@ -186,6 +207,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
+
+// Experience card toggle functionality
+function toggleCard(header) {
+    const card = header.parentElement;
+    const content = card.querySelector('.card-content');
+    const arrow = header.querySelector('.dropdown-arrow');
+    
+    // Toggle expanded state
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+        // Collapse
+        content.classList.remove('expanded');
+        header.classList.remove('expanded');
+    } else {
+        // Expand
+        content.classList.add('expanded');
+        header.classList.add('expanded');
+    }
+}
 
 

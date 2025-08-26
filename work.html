@@ -8,48 +8,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <title>Work - Henrique Oliveira</title>
     <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="work-styles.css">
 </head>
-<body>
+<body class="work-page">
     <!-- Navigation Header -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html#home" class="nav-link">HOME</a>
             <a href="index.html#about" class="nav-link">ABOUT</a>
-            <a href="index.html#work" class="nav-link">WORK</a>
-            <a href="index.html#publications" class="nav-link">PUBLICATIONS</a>
-            <a href="index.html#projects" class="nav-link">PROJECTS</a>
+            <a href="index.html#work" class="nav-link active">WORK</a>
+            <a href="publications.html" class="nav-link">PUBLICATIONS</a>
+            <a href="projects.html" class="nav-link">PROJECTS</a>
             <a href="index.html#connect" class="nav-link">CONNECT</a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
         </div>
-        
-        <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
     </nav>
 
-
-
-    <div class="page-content">
+    <!-- Main Content -->
+    <div class="page-content work-content">
         <div class="back-button-container">
-            <a href="index.html" class="back-button">← Back</a>
+            <a href="index.html" class="back-button">← BACK</a>
         </div>
         
-        <section class="subpage-section"></section>
+        <div class="work-page-container">
+            <h1 class="work-title">Work Experience</h1>
+            
+            <!-- Co-Founder & Product Lead - Parkd -->
+            <section id="parkd">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">PARKD</h1>
+                        <p class="job-title">Co-Founder & Product Lead</p>
+                    </div>
+                    <p class="duration">May 2025 - Present</p>
+                </div>
+                <p>Building an end-to-end platform that helps schools modernize parking management.</p>
+                <p>Leading product development, user interface design, and agile project management for a startup focused on solving real campus infrastructure challenges.</p>
+                <p>Working with engineering teams to develop scalable solutions and drive user adoption across educational institutions.</p>
+            </section>
+
+            <!-- Technology Advisor - Santa Clara Investment Fund -->
+            <section id="scif">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">SANTA CLARA INVESTMENT FUND</h1>
+                        <p class="job-title">Technology Advisor</p>
+                    </div>
+                    <p class="duration">Jan 2025 - Present</p>
+                </div>
+                <p>Student-run investment fund managing university endowment capital. I advise the technology sector on their investments in the public tech space.</p>
+                <p>Providing strategic guidance on market research and technology sector analysis to help inform investment decisions.</p>
+                <p>Collaborating with student analysts to evaluate market trends and identify high-potential investment opportunities.</p>
+            </section>
+
+            <!-- Co-Founder & Head of Growth - CrawlAI -->
+            <section id="crawlai">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">CRAWL AI</h1>
+                        <p class="job-title">Co-Founder & Head of Growth</p>
+                    </div>
+                    <p class="duration">Sep 2024 - Present</p>
+                </div>
+                <p>CrawlAI is a tool built by SCU students that simplifies building custom AI assistants without the need for technical expertise.</p>
+                <p>I lead our go-to-market strategy, customer acquisitions, and promoter partnerships to drive product adoption and market expansion.</p>
+                <p>Working closely with development teams to align product features with market needs and customer feedback.</p>
+            </section>
+
+            <!-- Product Management Intern - Permiso -->
+            <section id="permiso">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">PERMISO</h1>
+                        <p class="job-title">Product Management Intern</p>
+                    </div>
+                    <p class="duration">Jun 2024 - Sep 2024</p>
+                </div>
+                <p>Aided the development and execution of go-to-market strategies for Permiso's products - collaborating with engineering and marketing teams to enhance cloud security features.</p>
+                <p>Drove user adoption and expanded market presence through strategic product development and technical writing initiatives.</p>
+                <p>Worked on enterprise software solutions in the cybersecurity space, focusing on cloud security and SaaS platforms.</p>
+            </section>
+
+            <!-- Investment Analyst - Battery Ventures -->
+            <section id="battery">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">BATTERY VENTURES</h1>
+                        <p class="job-title">Investment Analyst</p>
+                    </div>
+                    <p class="duration">Jun 2024 - Aug 2024</p>
+                </div>
+                <p>Sourced and evaluated early/growth-stage B2B SaaS startups - presenting those with the highest growth potential to partners for investment.</p>
+                <p>Conducted thorough market research and due diligence on enterprise software companies across various sectors.</p>
+                <p>Developed analytical frameworks to assess startup viability and growth potential in the B2B SaaS space.</p>
+            </section>
+
+            <!-- Research Analyst - Greenfield Research Partners -->
+            <section id="greenfield">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">GREENFIELD RESEARCH PARTNERS</h1>
+                        <p class="job-title">Research Analyst</p>
+                    </div>
+                    <p class="duration">Jan 2024 - May 2024</p>
+                </div>
+                <p>Worked with private equity clients in developing acquisition targets via Pitchbook, Sourcescrub, and LinkedIn Sales Navigator.</p>
+                <p>Conducted detailed research and analysis to support investment decision-making processes.</p>
+                <p>Developed strong attention to detail and analytical skills in a fast-paced investment environment.</p>
+            </section>
+
+            <!-- Business Operations Intern - Ergo Works Inc. -->
+            <section id="ergoworks">
+                <div class="work-header">
+                    <div class="work-info">
+                        <h1 class="section-header">ERGO WORKS INC.</h1>
+                        <p class="job-title">Business Operations Intern</p>
+                    </div>
+                    <p class="duration">Jun 2023 - Aug 2023</p>
+                </div>
+                <p>Internship experience at Ergo Works Inc. focusing on business operations and data analysis.</p>
+                <p>Developed proficiency in Microsoft Excel and other analytical tools to support business processes.</p>
+                <p>Gained valuable experience in attention to detail and professional workplace dynamics.</p>
+            </section>
+        </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Henrique Oliveira</p>
     </footer>

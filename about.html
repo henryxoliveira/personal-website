@@ -8,48 +8,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <title>About - Henrique Oliveira</title>
     <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="about-styles.css">
 </head>
-<body>
+<body class="about-page">
     <!-- Navigation Header -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html#home" class="nav-link">HOME</a>
-            <a href="index.html#about" class="nav-link">ABOUT</a>
+            <a href="index.html#about" class="nav-link active">ABOUT</a>
             <a href="index.html#work" class="nav-link">WORK</a>
-            <a href="index.html#publications" class="nav-link">PUBLICATIONS</a>
-            <a href="index.html#projects" class="nav-link">PROJECTS</a>
+            <a href="publications.html" class="nav-link">PUBLICATIONS</a>
+            <a href="projects.html" class="nav-link">PROJECTS</a>
             <a href="index.html#connect" class="nav-link">CONNECT</a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
         </div>
-        
-        <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
     </nav>
 
-
-
-    <div class="page-content">
+    <!-- Main Content -->
+    <div class="page-content about-content">
         <div class="back-button-container">
-            <a href="index.html" class="back-button">← Back</a>
+            <a href="index.html" class="back-button">← BACK</a>
         </div>
         
-        <section class="subpage-section"></section>
+        <div class="about-page-container">
+            <h1 class="about-title">About Me</h1>
+            
+            <!-- Bio Section -->
+            <section id="bio">
+                <div class="about-header">
+                    <div class="about-info">
+                        <h1 class="section-header">BIO</h1>
+                        <p class="section-subtitle">Background & Education</p>
+                    </div>
+                    <p class="section-meta">Santa Clara University</p>
+                </div>
+                <p>I'm a junior at Santa Clara University, class of '27, studying Computer Science and Finance, with a minor in Mathematics.</p>
+                <p>I'm passionate about the intersection of technology and business, particularly in product management and startup development.</p>
+                <p>Looking ahead, I'm excited to keep growing as a product-minded engineer and future product manager, with a focus on solving problems that matter and working with teams to bring ideas to life.</p>
+            </section>
+
+            <!-- Hobbies Section -->
+            <section id="hobbies">
+                <div class="about-header">
+                    <div class="about-info">
+                        <h1 class="section-header">HOBBIES</h1>
+                        <p class="section-subtitle">What I Enjoy</p>
+                    </div>
+                    <p class="section-meta">Personal Time</p>
+                </div>
+                <p>Outside of school and work, I'm usually playing guitar, playing chess, or being outdoors.</p>
+                <p>I love exploring new music and learning new songs on the guitar, which helps me stay creative and relaxed.</p>
+                <p>Chess has been a passion of mine for years - I enjoy the strategic thinking and problem-solving aspects of the game.</p>
+            </section>
+
+            <!-- Interests Section -->
+            <section id="interests">
+                <div class="about-header">
+                    <div class="about-info">
+                        <h1 class="section-header">INTERESTS</h1>
+                        <p class="section-subtitle">Areas of Focus</p>
+                    </div>
+                    <p class="section-meta">Professional</p>
+                </div>
+                <p>I'm deeply interested in AI and machine learning, particularly how these technologies can be applied to solve real-world problems.</p>
+                <p>Startups and entrepreneurship fascinate me - I love learning about how companies are built from the ground up and the challenges they face.</p>
+                <p>Cybersecurity is another area I'm passionate about, especially as it relates to protecting user data and building secure systems.</p>
+            </section>
+        </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Henrique Oliveira</p>
     </footer>

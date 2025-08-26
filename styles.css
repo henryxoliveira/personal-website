@@ -171,6 +171,10 @@ body.dark-mode section {
     background: transparent;
 }
 
+body.dark-mode .subpage-section {
+    background: transparent;
+}
+
 body.dark-mode .profile-section h1 {
     color: #333;
     font-size: 3.5em;
@@ -239,6 +243,19 @@ body.dark-mode .scroll-to-top:hover {
     padding-top: 0;
 }
 
+/* Work page specific scroll container styling */
+.work-page .scroll-container {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0;
+}
+
+/* Force full width for work page content */
+.work-page .scroll-container > * {
+    width: 100% !important;
+    max-width: none !important;
+}
+
 /* Section headers */
 .section-header {
     font-size: 1.8em;
@@ -264,8 +281,8 @@ body.dark-mode .scroll-to-top:hover {
 }
 
 section {
-    width: 60%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px 40px;
     text-align: left;
@@ -273,6 +290,14 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* Work page specific section styling */
+.work-page section {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 20px 40px;
+    margin: 0 !important;
 }
 
 #connect {
@@ -571,10 +596,16 @@ footer::before {
 /* Subpage Styles */
 .page-content {
     margin-top: 120px;
-    padding: 0 5%;
-    max-width: 1200px;
+    padding: 0 2%;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Work page specific page content styling */
+.work-page .page-content {
+    padding: 0;
+    max-width: none;
 }
 
 .back-button-container {
@@ -619,12 +650,12 @@ footer::before {
 
 
 .subpage-section {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
     margin-bottom: 40px;
     min-height: 400px;
+    box-shadow: none;
 }
 
 /* Hide subpage section when it's empty */
@@ -838,8 +869,13 @@ footer::before {
         padding: 0 20px;
     }
     
+    /* Work page mobile adjustments */
+    .work-page .page-content {
+        padding: 0;
+    }
+    
     .subpage-section {
-        padding: 25px;
+        padding: 0;
         margin-bottom: 30px;
     }
     
@@ -893,3 +929,408 @@ footer::before {
 }
 
 /* CSS updated at 08/15/2025 20:56:34 */
+
+/* Work Experience Card Styles */
+.work-title {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #333;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: none;
+}
+
+/* Work Header Layout */
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.work-info {
+    flex: 1;
+}
+
+.work-info .section-header {
+    margin-bottom: 5px;
+    font-size: 1.8em;
+    font-weight: 300;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.job-title {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #666;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.duration {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9em;
+    margin: 0;
+    text-align: right;
+    min-width: 150px;
+}
+
+/* Dark mode styles for work headers */
+body.dark-mode .work-info .section-header {
+    color: #ffffff;
+}
+
+body.dark-mode .job-title {
+    color: #cccccc;
+}
+
+body.dark-mode .duration {
+    color: #999;
+}
+
+/* Mobile responsive styles for work headers */
+@media (max-width: 768px) {
+    .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .duration {
+        text-align: left;
+        min-width: auto;
+    }
+    
+    .work-info .section-header {
+        font-size: 1.5em;
+    }
+}
+
+.experience-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.experience-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    cursor: pointer;
+    background: #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+.card-header:hover {
+    background: #f5f5f5;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    margin-right: 20px;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    font-size: 14px;
+}
+
+.card-info {
+    flex: 1;
+}
+
+.job-title {
+    font-size: 1.3em;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.company-name {
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 0 0 4px 0;
+    color: #666;
+}
+
+.duration {
+    font-size: 0.9em;
+    color: #888;
+    margin: 0 0 4px 0;
+}
+
+.location {
+    font-size: 0.9em;
+    color: #888;
+    margin: 0;
+}
+
+.dropdown-arrow {
+    font-size: 1.2em;
+    color: #666;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
+}
+
+.card-header.expanded .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.card-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.card-content.expanded {
+    padding: 24px;
+    max-height: 500px;
+}
+
+.description {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+
+.company-url {
+    margin: 0 0 20px 0;
+}
+
+.company-url a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.company-url a:hover {
+    text-decoration: underline;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background: #f0f0f0;
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 400;
+    border: 1px solid #e0e0e0;
+}
+
+/* Company logo placeholders */
+.parkd-logo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.scif-logo {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.crawlai-logo {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.permiso-logo {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.battery-logo {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: white;
+}
+
+.greenfield-logo {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+}
+
+.ergoworks-logo {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+/* Dark mode styles for experience cards */
+body.dark-mode .experience-card {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+body.dark-mode .card-header {
+    background: #333;
+    border-color: #444;
+}
+
+body.dark-mode .card-header:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode .job-title {
+    color: #ffffff;
+}
+
+body.dark-mode .company-name {
+    color: #cccccc;
+}
+
+body.dark-mode .duration,
+body.dark-mode .location {
+    color: #999;
+}
+
+body.dark-mode .description {
+    color: #ffffff;
+}
+
+body.dark-mode .skill-tag {
+    background: #444;
+    color: #ffffff;
+    border-color: #555;
+}
+
+body.dark-mode .card-content {
+    background: #2a2a2a;
+}
+
+/* Mobile responsive styles for experience cards */
+@media (max-width: 768px) {
+    .work-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    
+    .card-header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .company-logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 0;
+        align-self: flex-start;
+    }
+    
+    .card-info {
+        width: 100%;
+    }
+    
+    .dropdown-arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        margin-left: 0;
+    }
+    
+    .card-content {
+        padding: 0 20px;
+    }
+    
+    .card-content.expanded {
+        padding: 20px;
+    }
+    
+    .skills {
+        gap: 6px;
+    }
+    
+    .skill-tag {
+        font-size: 0.75em;
+        padding: 4px 10px;
+    }
+}
+
+/* COMPLETELY NEW WORK PAGE STYLES - FULL WIDTH */
+.work-content {
+    margin-top: 120px !important;
+    padding: 0 40px !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+.work-page-container {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.work-page-container .work-title {
+    width: 100% !important;
+    max-width: none !important;
+    margin-bottom: 40px !important;
+}
+
+.work-page-container section {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 20px 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    display: block !important;
+    flex-direction: unset !important;
+    justify-content: unset !important;
+}
+
+.work-page-container section p {
+    font-size: 1.1em !important;
+    line-height: 1.6 !important;
+    margin-bottom: 15px !important;
+    color: #333 !important;
+}
+
+/* Dark mode for new work page styles */
+body.dark-mode .work-page-container section p {
+    color: #ffffff !important;
+}
+
+/* Mobile responsive for new work page styles */
+@media (max-width: 768px) {
+    .work-content {
+        padding: 0 20px !important;
+    }
+    
+    .work-page-container section {
+        padding: 15px 0 !important;
+    }
+    
+    .work-page-container .work-title {
+        font-size: 2em !important;
+        margin-bottom: 30px !important;
+    }
+}
