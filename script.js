@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
+    // Debug: Check if button is found
+    console.log('Dark mode toggle button found:', darkModeToggle);
+    
     // Check for saved preference and apply it immediately
     function applyDarkMode() {
         const savedMode = localStorage.getItem('darkMode');
@@ -17,16 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
     applyDarkMode();
     
     // Toggle between dark and light mode
-    darkModeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        
-        // Save preference
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    });
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', function() {
+            console.log('Dark mode toggle clicked!');
+            body.classList.toggle('dark-mode');
+            
+            // Save preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    } else {
+        console.error('Dark mode toggle button not found!');
+    }
     
     // Listen for storage changes (in case user opens multiple tabs)
     window.addEventListener('storage', function(e) {
