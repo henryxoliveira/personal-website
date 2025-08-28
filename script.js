@@ -1,5 +1,9 @@
+// Test if JavaScript is loading
+console.log('Script.js is loading...');
+
 // Dark mode toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Dark mode script starting...');
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
@@ -21,15 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Toggle between dark and light mode
     if (darkModeToggle) {
+        console.log('Adding click event listener to dark mode toggle');
         darkModeToggle.addEventListener('click', function() {
             console.log('Dark mode toggle clicked!');
             body.classList.toggle('dark-mode');
             
+            // Visual feedback
+            console.log('Body classes after toggle:', body.className);
+            console.log('Dark mode class present:', body.classList.contains('dark-mode'));
+            
             // Save preference
             if (body.classList.contains('dark-mode')) {
                 localStorage.setItem('darkMode', 'enabled');
+                console.log('Dark mode enabled');
             } else {
                 localStorage.setItem('darkMode', 'disabled');
+                console.log('Dark mode disabled');
             }
         });
     } else {
@@ -216,24 +227,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-// Experience card toggle functionality
-function toggleCard(header) {
-    const card = header.parentElement;
-    const content = card.querySelector('.card-content');
-    const arrow = header.querySelector('.dropdown-arrow');
-    
-    // Toggle expanded state
-    const isExpanded = content.classList.contains('expanded');
-    
-    if (isExpanded) {
-        // Collapse
-        content.classList.remove('expanded');
-        header.classList.remove('expanded');
-    } else {
-        // Expand
-        content.classList.add('expanded');
-        header.classList.add('expanded');
+    // Experience card toggle functionality
+    function toggleCard(header) {
+        const card = header.parentElement;
+        const content = card.querySelector('.card-content');
+        const arrow = header.querySelector('.dropdown-arrow');
+        
+        // Toggle expanded state
+        const isExpanded = content.classList.contains('expanded');
+        
+        if (isExpanded) {
+            // Collapse
+            content.classList.remove('expanded');
+            header.classList.remove('expanded');
+        } else {
+            // Expand
+            content.classList.add('expanded');
+            header.classList.add('expanded');
+        }
     }
-}
+});
 
 

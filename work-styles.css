@@ -6,6 +6,23 @@
     overflow-x: hidden !important;
 }
 
+/* Ensure navbar positioning is correct on work page */
+.work-page .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 10000 !important;
+}
+
+.work-page .dark-mode-toggle {
+    position: absolute !important;
+    top: 50% !important;
+    right: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 10001 !important;
+}
+
 /* New container approach */
 .work-page .page-content {
     margin-top: 120px !important;
