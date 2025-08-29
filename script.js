@@ -103,20 +103,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const publicationsBottom = publicationsSection ? publicationsSection.offsetTop + publicationsSection.offsetHeight : 0;
         
         // Determine active section based on scroll position
-        const scrollMiddle = scrollY + (windowHeight / 2);
-        
-        if (scrollMiddle < homeBottom) {
+        // If at the very top of the page, always show "home" as active
+        if (scrollY <= 10) {
             newSection = 'home';
-        } else if (scrollMiddle < aboutBottom) {
-            newSection = 'about';
-        } else if (scrollMiddle < workBottom) {
-            newSection = 'work';
-        } else if (scrollMiddle < projectsBottom) {
-            newSection = 'projects';
-        } else if (scrollMiddle < publicationsBottom) {
-            newSection = 'publications';
         } else {
-            newSection = 'connect';
+            const scrollMiddle = scrollY + (windowHeight / 2);
+            
+            if (scrollMiddle < homeBottom) {
+                newSection = 'home';
+            } else if (scrollMiddle < aboutBottom) {
+                newSection = 'about';
+            } else if (scrollMiddle < workBottom) {
+                newSection = 'work';
+            } else if (scrollMiddle < projectsBottom) {
+                newSection = 'projects';
+            } else if (scrollMiddle < publicationsBottom) {
+                newSection = 'publications';
+            } else {
+                newSection = 'connect';
+            }
         }
         
         if (newSection !== currentSection) {
