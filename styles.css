@@ -366,6 +366,10 @@ body.dark-mode .connect-link::before {
     background-color: #ffffff;
 }
 
+body.dark-mode section p {
+    color: #ffffff;
+}
+
 #about {
     margin-top: 25vh;
     position: relative;
