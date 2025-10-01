@@ -180,8 +180,76 @@ body.dark-mode.work-page .work-page-container section p {
     color: #ffffff !important;
 }
 
+/* Work page background image styling */
+/* 
+TRIAL AND ERROR LOG - Work Experience Background Image Positioning
+===============================================================
+
+ISSUE: User wants to move the Golden Gate Bridge background image higher to show more of the top portion (bridge towers, skyline) and less of the bottom (water, foreground).
+
+ATTEMPTED SOLUTIONS:
+1. object-position: center 80% → center 20% → center 10%
+   - RESULT: Minimal visible change, image positioning adjustments didn't provide significant movement
+   
+2. object-position: center center → center top
+   - RESULT: No noticeable improvement
+   
+3. Height expansion approach: height: 100% → 150% with object-position: center top
+   - RESULT: Made it worse - caused distortion/stretching of the image
+   
+4. Reverted back to: height: 100% with object-position: center 10%
+   - RESULT: Current state - still not achieving desired effect
+
+NEXT APPROACHES TO TRY:
+- Try negative transform values: transform: translateY(-20px) or similar
+- Adjust container height and use different object-fit values
+- Consider using background-image CSS property instead of img element
+- Try object-position values like "center 0%" or "center top"
+- Consider using clip-path to crop specific areas
+- Try adjusting the container's top position or using margin-top on the background
+
+CURRENT STATE: Image still not positioned high enough to show more bridge/skyline content.
+User will continue working on this tomorrow.
+*/
+.work-page .full-width-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 70vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.work-page .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+}
+
+.work-page .work-page-container {
+    position: relative;
+    z-index: 2;
+    margin-top: 90vh;
+}
+
+/* Dark mode for work background */
+body.dark-mode.work-page .full-width-background {
+    opacity: 0.8;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
+    .work-page .full-width-background {
+        height: 50vh;
+    }
+    
+    .work-page .work-page-container {
+        margin-top: 70vh;
+    }
+    
     .work-page-container {
         width: 95% !important;
         padding: 0 20px !important;
