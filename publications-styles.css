@@ -1,5 +1,40 @@
 /* Publications Page Specific Styles - Fresh Start */
 
+/* Publications page background image styling */
+.publications-page .full-width-background {
+    position: absolute;
+    top: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 70vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.publications-page .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
+
+.publications-page .page-content {
+    margin-top: -50px !important;
+    padding: 0 4% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Dark mode for publications background */
+body.dark-mode.publications-page .full-width-background {
+    opacity: 0.8;
+}
+
 /* Reset and override all existing styles */
 .publications-page {
     background-color: #FBF9F2;

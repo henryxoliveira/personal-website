@@ -1,5 +1,40 @@
 /* About Page Specific Styles - Fresh Start */
 
+/* About page background image styling */
+.about-page .full-width-background {
+    position: absolute;
+    top: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 50vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.about-page .background-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+}
+
+.about-page .page-content {
+    margin-top: -50px !important;
+    padding: 0 4% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Dark mode for about background */
+body.dark-mode.about-page .full-width-background {
+    opacity: 0.8;
+}
+
 /* Reset and override all existing styles */
 .about-page {
     background-color: #FBF9F2;

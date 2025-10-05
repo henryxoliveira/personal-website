@@ -23,13 +23,16 @@
     z-index: 10001 !important;
 }
 
-/* New container approach */
+/* New container approach - use standard structure */
 .work-page .page-content {
-    margin-top: 120px !important;
-    padding: 0 !important;
-    max-width: 100vw !important;
-    width: 100vw !important;
+    margin-top: -50px !important;
+    padding: 0 4% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     overflow-x: hidden !important;
+    position: relative !important;
+    z-index: 10 !important;
 }
 
 /* New main container with proper constraints */
@@ -211,28 +214,23 @@ NEXT APPROACHES TO TRY:
 CURRENT STATE: Image still not positioned high enough to show more bridge/skyline content.
 User will continue working on this tomorrow.
 */
+/* Use standard home page structure for work page background */
 .work-page .full-width-background {
     position: absolute;
-    top: 0;
+    top: -120px;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
     height: 70vh;
-    z-index: 1;
+    z-index: 0;
     overflow: hidden;
 }
 
 .work-page .background-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 10%;
-}
-
-.work-page .work-page-container {
-    position: relative;
-    z-index: 2;
-    margin-top: 90vh;
+    object-fit: contain;
+    object-position: center center;
 }
 
 /* Dark mode for work background */
