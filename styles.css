@@ -381,35 +381,42 @@ body.dark-mode section p {
     position: relative;
 }
 
+.tooltip-container {
+    display: inline-block;
+    width: auto;
+}
+
 .tooltip {
     position: absolute;
-    top: calc(100% + 5px);
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    left: 100%;
+    margin-left: 10px;
+    transform: translateY(-50%);
     background-color: #333;
     color: #fff;
-    text-align: center;
+    text-align: left;
     padding: 8px 12px;
     border-radius: 4px;
     font-size: 0.85em;
-    white-space: nowrap;
     z-index: 1000;
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    min-width: 200px;
+    max-width: 250px;
+    white-space: normal;
 }
 
 .tooltip::after {
     content: "";
     position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent #333 transparent;
+    border-color: transparent #333 transparent transparent;
 }
 
 /* Show tooltip when hovering over the parent container */
