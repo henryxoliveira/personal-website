@@ -21,12 +21,36 @@ html {
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
-    background: rgba(251, 249, 242, 0.4);
+    max-width: 100%;
+    background: rgba(251, 249, 242, 0); /* Start transparent */
     backdrop-filter: blur(10px);
     z-index: 10000;
     padding: 20px 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+    will-change: max-width, padding, border-radius, background;
+}
+
+/* Transparent navbar state - at the very top */
+.navbar.transparent {
+    background: rgba(251, 249, 242, 0); /* 100% transparent */
+}
+
+/* Visible navbar state - when scrolled but not shrunk yet */
+.navbar.visible {
+    background: rgba(251, 249, 242, 0.4); /* Semi-transparent when visible */
+}
+
+/* Scrolled navbar state - shrinks horizontally only */
+.navbar.scrolled {
+    max-width: 650px;
+    padding: 20px 35px;
+    border-radius: 50px;
+    margin-top: 0;
+    background: rgba(251, 249, 242, 0.4); /* Semi-transparent when scrolled */
 }
 
 .nav-container {
@@ -35,11 +59,20 @@ html {
     align-items: center;
     gap: 40px;
     position: relative;
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     visibility: visible;
     opacity: 1;
     padding-right: 60px; /* Make room for the dark mode toggle */
+    transition: gap 0.3s ease;
+}
+
+/* Shrink nav container when scrolled */
+.navbar.scrolled .nav-container {
+    gap: 25px;
+    padding-right: 45px;
+    max-width: none;
 }
 
 .nav-link {
@@ -50,11 +83,17 @@ html {
     letter-spacing: 1px;
     padding: 10px 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
     cursor: pointer;
     display: inline-block;
     visibility: visible;
     opacity: 1;
+}
+
+/* Keep nav links the same size when scrolled */
+.navbar.scrolled .nav-link {
+    font-size: 16px;
+    padding: 10px 0;
 }
 
 .nav-link:hover {
@@ -91,6 +130,19 @@ html {
     background-color: #555;
     transition: all 0.3s ease;
     width: 0;
+    left: 0;
+    transform: none;
+    opacity: 0; /* Hide initially */
+}
+
+/* Show indicator once it's been positioned by JavaScript */
+.nav-indicator.positioned {
+    opacity: 1;
+}
+
+/* Hide indicator during navbar transitions to prevent misalignment */
+.navbar.transitioning .nav-indicator {
+    opacity: 0;
 }
 
 /* Dark Mode Toggle Button */
@@ -131,22 +183,62 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background: rgba(26, 26, 26, 0.4);
+    background: rgba(26, 26, 26, 0); /* Start transparent in dark mode */
 }
 
+body.dark-mode .navbar.transparent {
+    background: rgba(26, 26, 26, 0); /* 100% transparent in dark mode */
+}
+
+body.dark-mode .navbar.visible {
+    background: rgba(26, 26, 26, 0.4); /* Semi-transparent when visible in dark mode */
+}
+
+body.dark-mode .navbar.scrolled {
+    background: rgba(26, 26, 26, 0.4); /* Semi-transparent when scrolled in dark mode */
+}
+
+/* Dark mode nav links - keep dark color when transparent (at top) */
 body.dark-mode .nav-link {
+    color: #333; /* Dark color to match light mode */
+}
+
+/* Dark mode nav links - switch to white when navbar becomes visible */
+body.dark-mode .navbar.visible .nav-link,
+body.dark-mode .navbar.scrolled .nav-link {
     color: #ffffff;
 }
 
+/* Dark mode nav link hover - dark when transparent */
 body.dark-mode .nav-link:hover {
-    color: #cccccc;
+    color: #000; /* Darker on hover when at top */
 }
 
+/* Dark mode nav link hover - white when visible/scrolled */
+body.dark-mode .navbar.visible .nav-link:hover,
+body.dark-mode .navbar.scrolled .nav-link:hover {
+    color: #cccccc; /* Light gray on hover when visible/scrolled */
+}
+
+/* Dark mode nav link underlines - dark when transparent */
 body.dark-mode .nav-link::after {
+    background-color: #555; /* Dark underline when at top */
+}
+
+/* Dark mode nav link underlines - white when visible/scrolled */
+body.dark-mode .navbar.visible .nav-link::after,
+body.dark-mode .navbar.scrolled .nav-link::after {
     background-color: #ffffff;
 }
 
+/* Dark mode nav indicator - dark when transparent */
 body.dark-mode .nav-indicator {
+    background-color: #555; /* Dark indicator when at top */
+}
+
+/* Dark mode nav indicator - white when visible/scrolled */
+body.dark-mode .navbar.visible .nav-indicator,
+body.dark-mode .navbar.scrolled .nav-indicator {
     background-color: #ffffff;
 }
 
@@ -154,8 +246,15 @@ body.dark-mode .dark-mode-toggle .sun-icon {
     display: none;
 }
 
+/* Dark mode toggle - dark when transparent */
 body.dark-mode .dark-mode-toggle .moon-icon {
     display: block;
+    color: #333; /* Dark color when at top */
+}
+
+/* Dark mode toggle - white when visible/scrolled */
+body.dark-mode .navbar.visible .dark-mode-toggle .moon-icon,
+body.dark-mode .navbar.scrolled .dark-mode-toggle .moon-icon {
     color: #ffffff;
 }
 
@@ -831,12 +930,31 @@ footer::before {
         padding: 15px 0;
     }
     
+    .navbar.scrolled {
+        max-width: 550px;
+        padding: 15px 25px;
+        border-radius: 40px;
+        margin-top: 0;
+    }
+    
     .nav-container {
         gap: 20px;
-        padding: 0 20px;
+        max-width: 90%;
+        padding-right: 40px;
+    }
+    
+    .navbar.scrolled .nav-container {
+        gap: 15px;
+        padding-right: 35px;
+        max-width: none;
     }
     
     .nav-link {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+    
+    .navbar.scrolled .nav-link {
         font-size: 14px;
         padding: 8px 0;
     }
@@ -981,13 +1099,36 @@ footer::before {
 
 /* Small mobile devices */
 @media (max-width: 480px) {
+    .navbar {
+        padding: 12px 0;
+    }
+    
+    .navbar.scrolled {
+        max-width: 420px;
+        padding: 12px 20px;
+        border-radius: 35px;
+        margin-top: 0;
+    }
+    
     .nav-container {
         gap: 15px;
-        padding: 0 15px;
+        max-width: 95%;
+        padding-right: 30px;
+    }
+    
+    .navbar.scrolled .nav-container {
+        gap: 12px;
+        padding-right: 30px;
+        max-width: none;
     }
     
     .nav-link {
         font-size: 13px;
+    }
+    
+    .navbar.scrolled .nav-link {
+        font-size: 13px;
+        padding: 8px 0;
     }
     
     section {

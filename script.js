@@ -55,10 +55,92 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Navbar shrink on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    
+    function updateNavbar() {
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > 50;
+        const isScrolled = navbar.classList.contains('scrolled');
+        const isTransparent = navbar.classList.contains('transparent');
+        const isVisible = navbar.classList.contains('visible');
+        
+        // Handle transparency states
+        if (currentScrollY <= 10) {
+            // At the very top - fully transparent
+            if (!navbar.classList.contains('transparent')) {
+                navbar.classList.add('transitioning');
+                navbar.classList.add('transparent');
+                navbar.classList.remove('visible', 'scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    navbar.classList.remove('transitioning');
+                    if (window.forceIndicatorUpdate) window.forceIndicatorUpdate();
+                }, 600);
+            }
+        } else if (currentScrollY > 10 && currentScrollY <= 50) {
+            // Scrolled but not enough to shrink - visible with blur
+            if (!navbar.classList.contains('visible') || navbar.classList.contains('scrolled')) {
+                navbar.classList.add('transitioning');
+                navbar.classList.remove('transparent');
+                navbar.classList.add('visible');
+                navbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    navbar.classList.remove('transitioning');
+                    if (window.forceIndicatorUpdate) window.forceIndicatorUpdate();
+                }, 600);
+            }
+        } else {
+            // Scrolled enough to shrink - visible and shrunk
+            navbar.classList.remove('transparent');
+            navbar.classList.add('visible');
+            
+            if (shouldBeScrolled && !isScrolled) {
+                navbar.classList.add('transitioning');
+                navbar.classList.add('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    navbar.classList.remove('transitioning');
+                    if (window.forceIndicatorUpdate) window.forceIndicatorUpdate();
+                }, 600);
+            } else if (!shouldBeScrolled && isScrolled) {
+                navbar.classList.add('transitioning');
+                navbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    navbar.classList.remove('transitioning');
+                    if (window.forceIndicatorUpdate) window.forceIndicatorUpdate();
+                }, 600);
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    function handleNavbarScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+    
+    // Add scroll event listener for navbar shrinking
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    
+    // Initial check
+    updateNavbar();
+});
+
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const navIndicator = document.querySelector('.nav-indicator');
+    const navbar = document.querySelector('.navbar');
     const sections = ['home', 'about', 'work', 'projects', 'publications', 'connect'];
     
     let currentSection = 'home';
@@ -67,6 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if we're on a subpage
     const isSubpage = window.location.pathname !== '/' && window.location.pathname !== '/index.html';
+    
+    // Make function available globally
+    window.forceIndicatorUpdate = forceIndicatorUpdate;
     
     // Set active navigation link for subpages
     if (isSubpage) {
@@ -79,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to update active section based on scroll position (only for main page)
     function updateActiveSection() {
-        if (isHovering || isSubpage) return; // Don't update if hovering or on subpage
+        if (isSubpage) return; // Don't update if on subpage (but allow during hovering)
         
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
@@ -104,27 +189,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Determine active section based on scroll position
         // If at the very top of the page, always show "home" as active
-        if (scrollY <= 10) {
+        if (scrollY <= 50) {
             newSection = 'home';
         } else {
-            const scrollMiddle = scrollY + (windowHeight / 2);
+            // Check which section is currently in the viewport
+            // Use a smaller threshold to make it more responsive
+            const scrollThreshold = scrollY + (windowHeight * 0.3); // 30% down from top of viewport
             
-            if (scrollMiddle < homeBottom) {
+            // Special case: if we're near the bottom of the page, always show connect
+            const documentHeight = document.documentElement.scrollHeight;
+            const bottomThreshold = documentHeight - windowHeight - 100; // 100px from bottom
+            
+            if (scrollY >= bottomThreshold) {
+                newSection = 'connect';
+            } else if (scrollThreshold < aboutSection.offsetTop) {
                 newSection = 'home';
-            } else if (scrollMiddle < aboutBottom) {
+            } else if (scrollThreshold < workSection.offsetTop) {
                 newSection = 'about';
-            } else if (scrollMiddle < workBottom) {
+            } else if (scrollThreshold < projectsSection.offsetTop) {
                 newSection = 'work';
-            } else if (scrollMiddle < projectsBottom) {
+            } else if (scrollThreshold < publicationsSection.offsetTop) {
                 newSection = 'projects';
-            } else if (scrollMiddle < publicationsBottom) {
+            } else if (scrollThreshold < connectSection.offsetTop) {
                 newSection = 'publications';
             } else {
                 newSection = 'connect';
             }
         }
         
+        // Debug logging
+        console.log(`Scroll: ${scrollY}px, Section: ${newSection}, Previous: ${currentSection}`);
+        
         if (newSection !== currentSection) {
+            console.log(`Changing from ${currentSection} to ${newSection}`);
             currentSection = newSection;
             updateIndicator();
         }
@@ -135,17 +232,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isSubpage) return; // Don't update indicator on subpages
         
         const activeLink = document.querySelector(`[data-section="${currentSection}"]`);
-        if (activeLink && !isHovering) {
-            const linkRect = activeLink.getBoundingClientRect();
-            const containerRect = document.querySelector('.nav-container').getBoundingClientRect();
+        if (activeLink && !isHovering && navIndicator) {
+            // Use offsetLeft for more reliable positioning relative to the container
+            const leftPosition = activeLink.offsetLeft;
+            const width = activeLink.offsetWidth;
             
-            const leftPosition = linkRect.left - containerRect.left;
-            const width = linkRect.width;
+            console.log(`Positioning indicator for ${currentSection}: left=${leftPosition}px, width=${width}px`);
             
-            if (navIndicator) {
-                navIndicator.style.left = leftPosition + 'px';
-                navIndicator.style.width = width + 'px';
-            }
+            navIndicator.style.left = leftPosition + 'px';
+            navIndicator.style.width = width + 'px';
+            
+            // Mark as positioned so it becomes visible
+            navIndicator.classList.add('positioned');
+        }
+    }
+    
+    // Function to force indicator update without transition interference
+    function forceIndicatorUpdate() {
+        if (!isSubpage && navIndicator) {
+            // Use a more efficient approach
+            requestAnimationFrame(() => {
+                updateIndicator();
+            });
         }
     }
     
@@ -208,11 +316,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('JavaScript is running!'); // Simple test
         console.log('Current page:', window.location.pathname);
         
+        // Set initial navbar state
+        navbar.classList.add('transparent');
+        
+        // Separate scroll listener for section detection
         window.addEventListener('scroll', updateActiveSection);
         
-        // Initial setup
+        // Initial setup - let scroll detection determine the active section
         updateActiveSection();
         updateIndicator();
+        
     }
     
     // Handle back button functionality
