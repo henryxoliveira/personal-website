@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <title>Henrique Oliveira - Portfolio</title>
     <link rel="icon" type="image/png" href="assets/image.png">
-    <link rel="stylesheet" href="styles.css?v=9">
+    <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
 
@@ -73,7 +73,7 @@
                      
                      <p>I am from São Paulo, Brazil, but grew up in the San Francisco Bay Area. Growing up in Silicon Valley while coming from Latin American immigrant household gave me a unique perspective:</p>
                      
-                     <p>I've always been surrounded by innovation and technology, while also carrying the values of resilience, community, and adaptability that my family brought with us.</p>
+                     <p>I've always been surrounded by innovation and technology, having worked at startups since I was 16, while also carrying the values of resilience, community, and adaptability that my family brought with us.</p>
                      
                      <p>Outside of school and work, I'm usually playing guitar, playing chess or being outdoors.</p>
                  </div>
@@ -89,19 +89,21 @@
                  <a href="work.html#parkd" class="see-more-button" style="margin: 0; transform: none; left: auto;">Parkd - Software Engineer & Co-Founder</a>
                  <a href="work.html#permiso" class="see-more-button" style="margin: 0; transform: none; left: auto;">Permiso - Product Management Intern</a>
                  <a href="work.html#battery" class="see-more-button" style="margin: 0; transform: none; left: auto;">Battery Ventures - Analyst Extern</a>
-             </div>
-             
-             <p style="margin-top: 30px; margin-bottom: 15px; font-weight: 300; font-size: 18px; color: #333; text-transform: uppercase; letter-spacing: 1px;">Resumes:</p>
-             <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px; margin-left: 30px;">
-                 <div class="tooltip-container" style="position: relative;">
-                     <a href="assets/Henrique Oliveira - Resume - SWE.pdf?v=8" class="see-more-button resume-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View SWE Resume</a>
-                     <div class="tooltip">Technical resume focusing on software development skills</div>
-                 </div>
-                 <div class="tooltip-container" style="position: relative;">
-                     <a href="assets/Henrique Oliveira - Resume - PM.pdf?v=8" class="see-more-button resume-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View PM Resume</a>
-                     <div class="tooltip">Emphasizes product strategy, user research, and business impact</div>
-                 </div>
-             </div>
+            </div>
+            
+            <!-- FUTURE LLM NOTE: To re-add resume buttons, uncomment the section below and update file paths if needed:
+            <p style="margin-top: 30px; margin-bottom: 15px; font-weight: 300; font-size: 18px; color: #333; text-transform: uppercase; letter-spacing: 1px;">Resumes:</p>
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px; margin-left: 30px;">
+                <div class="tooltip-container" style="position: relative;">
+                    <a href="assets/Henrique Oliveira - Resume - SWE.pdf?v=8" class="see-more-button resume-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View SWE Resume</a>
+                    <div class="tooltip">Technical resume focusing on software development skills</div>
+                </div>
+                <div class="tooltip-container" style="position: relative;">
+                    <a href="assets/Henrique Oliveira - Resume - PM.pdf?v=8" class="see-more-button resume-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View PM Resume</a>
+                    <div class="tooltip">Emphasizes product strategy, user research, and business impact</div>
+                </div>
+            </div>
+            -->
          </section>
 
 
@@ -115,10 +117,24 @@
              <p>This website is another project; my way of experimenting with HTML/CSS while creating a space to showcase my work.</p>
              
              <p>As I keep learning, I'll be adding hackathons, side builds, and new experiments along the way. See more below.</p>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
                 <a href="https://github.com/henryxoliveira" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View GitHub</a>
-                <a href="https://parkd.io" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View Parkd</a>
-                <a href="projects.html" class="see-more-button" style="margin: 0; transform: none; left: auto;">See More</a>
+                <div style="display: flex; align-items: center; gap: 20px; margin-left: 30px;">
+                    <span style="color: #333;">PARKD:</span>
+                    <a href="projects.html#parkd" class="see-more-button" style="margin: 0; transform: none; left: auto; text-decoration: none;">DESCRIPTION</a>
+                    <a href="https://parkd.io" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto; text-decoration: none;">WEBSITE</a>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px; margin-left: 30px;">
+                    <span style="color: #333;">TOWER OF HANOI:</span>
+                    <a href="projects.html#tower-of-hanoi" class="see-more-button" style="margin: 0; transform: none; left: auto; text-decoration: none;">DESCRIPTION</a>
+                    <a href="https://github.com/henryxoliveira/tower-of-hanoi" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto; text-decoration: none;">GITHUB REPO</a>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px; margin-left: 30px;">
+                    <span style="color: #333;">CRAWLAI:</span>
+                    <a href="projects.html#crawlai" class="see-more-button" style="margin: 0; transform: none; left: auto; text-decoration: none;">DESCRIPTION</a>
+                    <a href="https://www.crawlai.org/" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto; text-decoration: none;">WEBSITE</a>
+                    <a href="https://github.com/henryxoliveira/crawlai" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto; text-decoration: none;">GITHUB REPO</a>
+                </div>
             </div>
          </section>
 
@@ -126,7 +142,9 @@
              <h1 class="section-header">Publications</h1>
              <p>I've been trying to publish more to better showcase my work, thoughts, and experiences.</p>
              
-             <p>On my Substack, <em>Growing Exponentially</em>, I share essays on AI, startups, cybersecurity, and broader tech trends. I've also co-authored research and memos for the Santa Clara Investment Fund.</p>
+             <p>On my Substack, <em>Growing Exponentially</em>, I share essays on my experiences throughout startups, products along with thoughts on AI, cybersecurity, and broader tech trends.</p>
+             
+             <p>I've also co-authored research memos for the technology sector Santa Clara Investment Fund.</p>
              
              <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
                  <a href="https://substack.com/@growingexponentially" class="see-more-button" target="_blank" rel="noopener noreferrer" style="margin: 0; transform: none; left: auto;">View Substack</a>
