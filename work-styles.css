@@ -54,35 +54,6 @@
     padding-left: 40px !important;
 }
 
-/* Top back button - make it prominent and centered */
-.work-page .top-back-button {
-    text-align: center !important;
-    margin: 20px 0 40px 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-    z-index: 100 !important;
-}
-
-.work-page .top-back-button .back-button {
-    display: inline-block !important;
-    padding: 12px 24px !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border: 2px solid #333 !important;
-    border-radius: 25px !important;
-    color: #333 !important;
-    text-decoration: none !important;
-    font-weight: 500 !important;
-    font-size: 1.1em !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.work-page .top-back-button .back-button:hover {
-    background-color: #333 !important;
-    color: white !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-}
 
 /* Work title styling */
 .work-page-container .work-title {
@@ -215,17 +186,6 @@ body.dark-mode.work-page .work-page-container section p {
     color: #ffffff !important;
 }
 
-/* Dark mode back button styles */
-body.dark-mode.work-page .top-back-button .back-button {
-    background-color: rgba(26, 26, 26, 0.9) !important;
-    border-color: #ffffff !important;
-    color: #ffffff !important;
-}
-
-body.dark-mode.work-page .top-back-button .back-button:hover {
-    background-color: #ffffff !important;
-    color: #1a1a1a !important;
-}
 
 /* Work page background image styling */
 /* 
