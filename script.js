@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const navIndicator = document.querySelector('.nav-indicator');
     const navbar = document.querySelector('.navbar');
-    const sections = ['home', 'about', 'work', 'projects', 'publications', 'connect'];
+    const sections = ['home', 'about', 'work', 'projects', 'university', 'publications', 'connect'];
     
     let currentSection = 'home';
     let isHovering = false;
@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const aboutSection = document.getElementById('about');
         const workSection = document.getElementById('work');
         const projectsSection = document.getElementById('projects');
+        const universitySection = document.getElementById('university');
         const publicationsSection = document.getElementById('publications');
         const connectSection = document.getElementById('connect');
         
@@ -185,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const aboutBottom = aboutSection ? aboutSection.offsetTop + aboutSection.offsetHeight : 0;
         const workBottom = workSection ? workSection.offsetTop + workSection.offsetHeight : 0;
         const projectsBottom = projectsSection ? projectsSection.offsetTop + projectsSection.offsetHeight : 0;
+        const universityBottom = universitySection ? universitySection.offsetTop + universitySection.offsetHeight : 0;
         const publicationsBottom = publicationsSection ? publicationsSection.offsetTop + publicationsSection.offsetHeight : 0;
         
         // Determine active section based on scroll position
@@ -208,8 +210,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 newSection = 'about';
             } else if (scrollThreshold < projectsSection.offsetTop) {
                 newSection = 'work';
-            } else if (scrollThreshold < publicationsSection.offsetTop) {
+            } else if (scrollThreshold < universitySection.offsetTop) {
                 newSection = 'projects';
+            } else if (scrollThreshold < publicationsSection.offsetTop) {
+                newSection = 'university';
             } else if (scrollThreshold < connectSection.offsetTop) {
                 newSection = 'publications';
             } else {
