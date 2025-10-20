@@ -12,17 +12,18 @@
     <link rel="stylesheet" href="work-styles.css">
 </head>
 <body class="work-page">
-    <!-- Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html#home" class="nav-link">HOME</a>
-            <a href="index.html#about" class="nav-link">ABOUT</a>
-            <a href="index.html#work" class="nav-link active">WORK</a>
-            <a href="projects.html" class="nav-link">PROJECTS</a>
-            <a href="university.html" class="nav-link">UNIVERSITY</a>
-            <a href="publications.html" class="nav-link">PUBLICATIONS</a>
-            <a href="index.html#connect" class="nav-link">CONNECT</a>
-            <div class="nav-indicator"></div>
+    <!-- Custom Work Page Navigation Header -->
+    <nav class="work-navbar">
+        <div class="work-nav-container">
+            <a href="index.html" class="work-nav-back">← BACK</a>
+            <h1 class="work-nav-title">Work Experience</h1>
+            <div class="work-nav-links">
+                <a href="#parkd" class="work-nav-link">PARKD</a>
+                <a href="#permiso" class="work-nav-link">PERMISO</a>
+                <a href="#battery" class="work-nav-link">BATTERY</a>
+                <a href="#greenfield" class="work-nav-link">GREENFIELD</a>
+                <a href="#ergoworks" class="work-nav-link">ERGOWORKS</a>
+            </div>
         </div>
         
         <!-- Dark Mode Toggle Button -->
@@ -57,29 +58,41 @@
     <div class="scroll-container">
         <!-- Main Content -->
         <div class="page-content work-content">
-            <div class="back-button-container">
-                <a href="index.html" class="back-button">< BACK</a>
-            </div>
-            
             <div class="work-page-container">
-            <h1 class="work-title">Work Experience</h1>
             
             <!-- Software Engineer & Co-Founder - Parkd -->
             <section id="parkd">
                 <div class="work-header">
                     <div class="work-info">
-                        <h1 class="section-header">PARKD</h1>
+                        <h1 class="section-header"><a href="https://parkd.io/" target="_blank" rel="noopener noreferrer">PARKD</a></h1>
                         <p class="job-title">Software Engineer & Co-Founder | Santa Clara, CA</p>
                     </div>
                     <p class="duration">May 2025 - Present</p>
                 </div>
-                <p>Co-founded and scaled Parkd, an end-to-end parking permit platform delivering seamless permit registration, vehicle management, and remote enforcement via LPR hardware for schools and universities.</p>
-                <p>Drove partnerships with Santa Clara University and Bellarmine College Prep: managing est. $100k in revenue within Year 1.</p>
-                <p>Leading team of 3 engineers to build full stack development product using React/NodeJS and AWS DynamoDB, handling 5,000+ users with secure token-based authentication via Auth0 single sign-on.</p>
-                <p>Implemented React-based UI with NodeJS backend APIs, streamlining navigation across student, faculty, and admin flows.</p>
-                <p>Automated CI/CD pipelines with GitHub and Docker, managing dev/staging/production version control, automated testing, reducing deployment time by 40%, ensuring zero-downtime rollouts, and quality assurance of new features.</p>
-                <p>Integrated REST APIs and TLS encryption while reducing latency by 20% by reducing payload size, restructuring queries.</p>
-                <p>Secured cloud-based admin dashboard via role-based identity access management to safeguard sensitive campus data.</p>
+                <p><strong>I co-founded a parking management platform company called Parkd</strong></p>
+                <ul>
+                    <li>It is an end-to-end system delivering permit registration, vehicle management, and remote parking enforcement to schools and universities</li>
+                    <li>We use a trained license plate reading ML model and adapt it to existing school cameras to remove the need for physical parking inspection</li>
+                    <li>We have both an admin-side for managing and enforcing parking, and a user side, for buying and managing permits</li>
+                </ul>
+                <p><strong>I'm currently leading a team of 3 student engineers to build Parkd</strong></p>
+                <ul>
+                    <li>It is written mainly in JavaScript, with a React frontend and Node backend, making API calls to our AWS DynamoDB database of permits, student accounts</li>
+                    <li>I also designed our frontend on Figma, focusing on making the process as easy and intuitive as possible for all end users</li>
+                    <li>We host weekly team meetings and code reviews to ensure we hit our deadlines on time</li>
+                    <li>We also automate our CI/CD pipelines with GitHub and Docker, managing dev/staging/production branches
+                        <ul>
+                            <li>This allows for automated testing, reduced deployment time, ensuring zero-downtime rollouts, and A/B testing of new features.</li>
+                        </ul>
+                    </li>
+                    <li>We also take security very seriously with full SSO integration with the existing school infrastructure (via Auth0), and TLS encryption of APIs</li>
+                </ul>
+                <p><strong>We're partnered with Santa Clara University (our school) and Bellarmine College Prep (a local high school) for pilots of our platform</strong></p>
+                <ul>
+                    <li>We began outreach around June of 2025, a few weeks after we began working on it, and rolled out to Bellarmine in September 2025</li>
+                    <li>Their entire parking management system runs on Parkd, managing an estimated $100K per year in school revenue via parking permits</li>
+                    <li>With SCU, we're still integrating with our school's camera system, but progress is coming soon (lots of bureaucracy and approvals to overcome first)</li>
+                </ul>
             </section>
 
 
@@ -88,57 +101,70 @@
             <section id="permiso">
                 <div class="work-header">
                     <div class="work-info">
-                        <h1 class="section-header">PERMISO SECURITY</h1>
+                        <h1 class="section-header"><a href="https://permiso.io/" target="_blank" rel="noopener noreferrer">PERMISO SECURITY</a></h1>
                         <p class="job-title">Product Management Intern | Palo Alto, CA</p>
                     </div>
                     <p class="duration">June 2024 - September 2024</p>
                 </div>
-                <p>Collaborated with cross-functional engineering, UI/UX, and GTM teams to align customer needs with company OKRs.</p>
-                <p>Wrote 100+ user stories/Jira tickets directly tied to code execution, reducing backlog & enabling faster feature delivery.</p>
-                <p>Designed and validated a per-user pricing model for SaaS and cloud infrastructure integrations by running SQL queries on AWS, resulting in improved sales pipeline conversion, influenced $2M in potential ARR.</p>
-                <p>Developed 'trust score' framework to quantify identity risk posture by combining identity factors with ML-based dynamic behavioral analytics, improving how F500 customers identify high-risk identities.</p>
+                <p>I worked as a Product Management intern for Permiso, a leading and fast-growing identity security startup</p>
+                <ul>
+                    <li>Collaborated with cross-functional engineering, UI/UX, and GTM teams to align customer needs with company OKRs</li>
+                    <li>Wrote 100+ user stories/Jira tickets directly tied to code execution, reducing backlog & enabling faster feature delivery</li>
+                    <li>Designed and validated a per-user pricing model for SaaS and cloud infrastructure integrations by running SQL queries on AWS, resulting in improved sales pipeline conversion, influenced $2M in potential ARR.</li>
+                    <li>Developed 'trust score' framework to quantify identity risk posture by combining identity factors with ML-based dynamic behavioral analytics, improving how F500 customers identify high-risk identities.</li>
+                </ul>
             </section>
 
             <!-- Analyst Extern - Battery Ventures -->
             <section id="battery">
                 <div class="work-header">
                     <div class="work-info">
-                        <h1 class="section-header">BATTERY VENTURES</h1>
+                        <h1 class="section-header"><a href="https://www.battery.com/" target="_blank" rel="noopener noreferrer">BATTERY VENTURES</a></h1>
                         <p class="job-title">Analyst Extern | San Francisco, CA</p>
                     </div>
                     <p class="duration">May 2023 - August 2023</p>
                 </div>
-                <p>Selected for a highly competitive externship at a leading VC firm investing out of a $3.8 Billion fund.</p>
-                <p>Sourced and evaluated 1,000+ SaaS startups, identifying high-potential candidates for investment, pitching 5 weekly.</p>
-                <p>Drove due diligence processes for 3 enterprise software startups by leading founder calls, and mapping competitive landscape, ultimately presenting to VPs and general partners.</p>
+                <p>Worked as a sourcing and diligence extern for one of the world's leading venture capital firms</p>
+                <ul>
+                    <li>Highly competitive externship, one of two non-targets on Dallin Bill's team</li>
+                    <li>Scoured the internet for B2B SaaS startups that fit our team's thesis, pitching 5 startups weekly onto our CRM. Battery analysts would review the startups and select those to move forward with a founder call</li>
+                    <li>Drove the diligence process for 3 startups I sourced, leading founder calls, going deep into their vertical, mapping competitive landscape, and making a harvey-ball analysis of their product</li>
+                    <li>Ultimately, I presented these to general partner Michael Brown</li>
+                </ul>
             </section>
 
             <!-- Research Analyst - Greenfield Research Partners -->
             <section id="greenfield">
                 <div class="work-header">
                     <div class="work-info">
-                        <h1 class="section-header">GREENFIELD RESEARCH PARTNERS</h1>
-                        <p class="job-title">Research Analyst | Menlo Park, CA (Remote)</p>
+                        <h1 class="section-header"><a href="https://greenfieldresearchpartners.com/" target="_blank" rel="noopener noreferrer">GREENFIELD RESEARCH PARTNERS</a></h1>
+                        <p class="job-title">Research Intern | Menlo Park, CA (Remote)</p>
                     </div>
-                    <p class="duration">January 2024 - May 2024</p>
+                    <p class="duration">February 2023 - May 2023</p>
                 </div>
-                <p>Worked with private equity clients in developing acquisition targets via Pitchbook, Sourcescrub, and LinkedIn Sales Navigator.</p>
-                <p>Conducted detailed research and analysis to support investment decision-making processes.</p>
-                <p>Developed strong attention to detail and analytical skills in a fast-paced investment environment.</p>
+                <p>Worked as a "Private Equity Research Intern" (essentially an SDR) for a private equity advisory firm</p>
+                <ul>
+                    <li>I sourced acquisition targets for our clients, did preliminary research on Pitchbook, Sourcescrub, and LinkedIn Sales Navigator</li>
+                    <li>Logged the research onto our Salesforce CRM to be reviewed by full-time analysts</li>
+                    <li>Also sent 100s of cold emails, and made cold phone calls pitching our client's financial services to target clients</li>
+                </ul>
             </section>
 
-            <!-- Business Operations Intern - Ergo Works Inc. -->
+            <!-- Backend Operations Intern - ErgoWorks Inc. -->
             <section id="ergoworks">
                 <div class="work-header">
                     <div class="work-info">
-                        <h1 class="section-header">ERGO WORKS INC.</h1>
-                        <p class="job-title">Business Operations Intern | Palo Alto, CA</p>
+                        <h1 class="section-header"><a href="https://askergoworks.com/" target="_blank" rel="noopener noreferrer">ERGOWORKS INC.</a></h1>
+                        <p class="job-title">Backend Operations Intern | Palo Alto, CA</p>
                     </div>
-                    <p class="duration">Jun 2023 - Aug 2023</p>
+                    <p class="duration">June 2021 - July 2022</p>
                 </div>
-                <p>Internship experience at Ergo Works Inc. focusing on business operations and data analysis.</p>
-                <p>Developed proficiency in Microsoft Excel and other analytical tools to support business processes.</p>
-                <p>Gained valuable experience in attention to detail and professional workplace dynamics.</p>
+                <p>Began working for Ergoworks over the summer in high school at age 16, a startup selling ergonomic office supplies on Amazon and Shopify</p>
+                <ul>
+                    <li>I managed our back-end operations, printing out daily orders, boxing and packaging them in the warehouse</li>
+                    <li>Managed our AWS database of products, updating price changes, logging new products, and removing old ones, updated website in HTML</li>
+                    <li>Became proficient in Microsoft <strong>Excel</strong>, AWS, and gained valuable experience in attention to detail and professional workplace dynamics</li>
+                </ul>
             </section>
         </div>
     </div>

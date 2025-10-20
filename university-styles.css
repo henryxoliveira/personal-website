@@ -1,8 +1,8 @@
 /* University Page Specific Styles */
 
 .university-page {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #FBF9F2;
+    color: #333;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -22,7 +22,7 @@
     font-weight: 300;
     text-align: center;
     margin-bottom: 60px;
-    color: var(--text-color);
+    color: #333;
     letter-spacing: 2px;
 }
 
@@ -33,7 +33,7 @@
 .university-info h1 {
     font-size: 1.8rem;
     font-weight: 300;
-    color: var(--text-color);
+    color: #333;
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
@@ -41,7 +41,7 @@
 .university-page section {
     margin-bottom: 80px;
     padding-bottom: 40px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #ccc;
 }
 
 .university-page section:last-child {
@@ -52,7 +52,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
-    color: var(--text-color);
+    color: #333;
     font-weight: 300;
 }
 
@@ -84,4 +84,26 @@
     .university-info h1 {
         font-size: 1.3rem;
     }
+}
+
+/* Dark mode styles */
+body.dark-mode.university-page {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-info h1 {
+    color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-page p {
+    color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-page section {
+    border-bottom-color: #444 !important;
 }

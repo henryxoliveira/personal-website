@@ -4,16 +4,245 @@
 .work-page {
     background-color: #FBF9F2;
     overflow-x: hidden !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow-y: visible !important;
 }
 
-/* Ensure navbar positioning is correct on work page */
+html.work-page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: visible !important;
+}
+
+body.work-page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: visible !important;
+}
+
+/* Custom Work Page Navbar */
+.work-navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: rgba(251, 249, 242, 0);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    padding: 20px 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+}
+
+/* Transparent navbar state - at the very top */
+.work-navbar.transparent {
+    background: rgba(251, 249, 242, 0);
+}
+
+/* Visible navbar state - when scrolled but not shrunk yet */
+.work-navbar.visible {
+    background: rgba(251, 249, 242, 0.4);
+}
+
+/* Scrolled navbar state - shrinks horizontally only */
+.work-navbar.scrolled {
+    max-width: 750px;
+    padding: 20px 40px;
+    border-radius: 50px;
+    margin-top: 0;
+    background: rgba(251, 249, 242, 0.4);
+}
+
+.work-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    position: relative;
+    transition: gap 0.3s ease;
+}
+
+/* Shrink nav container when scrolled */
+.work-navbar.scrolled .work-nav-container {
+    gap: 25px;
+    padding-right: 50px;
+    max-width: none;
+}
+
+.work-nav-back {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.work-nav-back:hover {
+    color: #000;
+}
+
+.work-nav-back::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #555;
+    transition: width 0.3s ease;
+}
+
+.work-nav-back:hover::after {
+    width: 100%;
+}
+
+.work-nav-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 0;
+}
+
+.work-nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.work-nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.work-nav-link:hover {
+    color: #000;
+}
+
+.work-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #555;
+    transition: width 0.3s ease;
+}
+
+.work-nav-link:hover::after {
+    width: 100%;
+}
+
+/* Dark mode for work navbar */
+body.dark-mode.work-page .work-navbar {
+    background: rgba(26, 26, 26, 0);
+}
+
+body.dark-mode.work-page .work-navbar.visible {
+    background: rgba(26, 26, 26, 0.4);
+}
+
+body.dark-mode.work-page .work-navbar.scrolled {
+    background: rgba(26, 26, 26, 0.4);
+}
+
+/* Dark mode nav links - keep dark color when transparent (at top) */
+body.dark-mode.work-page .work-nav-back {
+    color: #333; /* Dark color to match light mode */
+}
+
+/* Dark mode nav links - switch to white when navbar becomes visible */
+body.dark-mode.work-page .work-navbar.visible .work-nav-back,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-back {
+    color: #ffffff;
+}
+
+/* Dark mode nav link hover - dark when transparent */
+body.dark-mode.work-page .work-nav-back:hover {
+    color: #000;
+}
+
+/* Dark mode nav link hover - light when navbar is visible */
+body.dark-mode.work-page .work-navbar.visible .work-nav-back:hover,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-back:hover {
+    color: #cccccc;
+}
+
+body.dark-mode.work-page .work-nav-back::after {
+    background-color: #555;
+}
+
+body.dark-mode.work-page .work-navbar.visible .work-nav-back::after,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-back::after {
+    background-color: #ffffff;
+}
+
+body.dark-mode.work-page .work-nav-title {
+    color: #ffffff;
+}
+
+/* Dark mode nav links - keep dark color when transparent (at top) */
+body.dark-mode.work-page .work-nav-link {
+    color: #333; /* Dark color to match light mode */
+}
+
+/* Dark mode nav links - switch to white when navbar becomes visible */
+body.dark-mode.work-page .work-navbar.visible .work-nav-link,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-link {
+    color: #ffffff;
+}
+
+/* Dark mode nav link hover - dark when transparent */
+body.dark-mode.work-page .work-nav-link:hover {
+    color: #000;
+}
+
+/* Dark mode nav link hover - light when navbar is visible */
+body.dark-mode.work-page .work-navbar.visible .work-nav-link:hover,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-link:hover {
+    color: #cccccc;
+}
+
+body.dark-mode.work-page .work-nav-link::after {
+    background-color: #555;
+}
+
+body.dark-mode.work-page .work-navbar.visible .work-nav-link::after,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
+    background-color: #ffffff;
+}
+
+/* Hide the default navbar on work page */
 .work-page .navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 100% !important;
-    z-index: 10000 !important;
+    display: none !important;
+}
+
+/* Ensure scroll container allows full content */
+.work-page .scroll-container {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 999 !important;
 }
 
 .work-page .dark-mode-toggle {
@@ -26,14 +255,16 @@
 
 /* New container approach - use standard structure */
 .work-page .page-content {
-    margin-top: -50px !important;
-    padding: 0 4% !important;
+    margin-top: 25vh !important;
+    padding: 0 4% 400px 4% !important;
     max-width: 1200px !important;
     margin-left: auto !important;
     margin-right: auto !important;
     overflow-x: hidden !important;
     position: relative !important;
-    z-index: 10 !important;
+    z-index: 1000 !important;
+    min-height: auto !important;
+    height: auto !important;
 }
 
 /* New main container with proper constraints */
@@ -41,9 +272,12 @@
     width: 90% !important;
     max-width: 1400px !important;
     margin: 0 auto !important;
-    padding: 0 40px !important;
+    padding: 0 60px 100px 60px !important;
     box-sizing: border-box !important;
-    overflow-x: hidden !important;
+    overflow-x: visible !important;
+    margin-top: 0px !important;
+    position: relative !important;
+    z-index: 1001 !important;
 }
 
 /* Back button positioning */
@@ -54,11 +288,12 @@
 }
 
 
+
 /* Work title styling */
 .work-page-container .work-title {
     font-size: 2.5em !important;
     font-weight: 300 !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 80px !important;
     color: #333 !important;
     text-align: left !important;
     text-transform: uppercase !important;
@@ -82,6 +317,9 @@
     box-sizing: border-box !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
+    position: relative !important;
+    z-index: 1002 !important;
+    background: rgba(251, 249, 242, 0.95) !important;
 }
 
 /* Work header layout */
@@ -121,6 +359,33 @@
     display: none !important;
 }
 
+/* Company title links styling */
+.work-page-container .work-info .section-header a {
+    text-decoration: none !important;
+    color: inherit !important;
+    position: relative !important;
+    transition: color 0.3s ease !important;
+}
+
+.work-page-container .work-info .section-header a:hover {
+    color: #000 !important;
+}
+
+.work-page-container .work-info .section-header a::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: #555 !important;
+    transition: width 0.3s ease !important;
+}
+
+.work-page-container .work-info .section-header a:hover::after {
+    width: 100% !important;
+}
+
 .work-page-container .job-title {
     font-size: 1.1em !important;
     font-weight: 400 !important;
@@ -143,6 +408,7 @@
     min-width: 150px !important;
     max-width: 200px !important;
     box-sizing: border-box !important;
+    white-space: nowrap !important;
 }
 
 /* Paragraph text with proper constraints */
@@ -173,6 +439,19 @@ body.dark-mode.work-page .work-page-container .work-info .section-header {
     color: #ffffff !important;
 }
 
+/* Dark mode for company title links */
+body.dark-mode.work-page .work-page-container .work-info .section-header a {
+    color: inherit !important;
+}
+
+body.dark-mode.work-page .work-page-container .work-info .section-header a:hover {
+    color: #cccccc !important;
+}
+
+body.dark-mode.work-page .work-page-container .work-info .section-header a::after {
+    background-color: #ffffff !important;
+}
+
 body.dark-mode.work-page .work-page-container .job-title {
     color: #cccccc !important;
 }
@@ -184,6 +463,7 @@ body.dark-mode.work-page .work-page-container .duration {
 body.dark-mode.work-page .work-page-container section p {
     color: #ffffff !important;
 }
+
 
 
 /* Work page background image styling */
@@ -220,7 +500,7 @@ User will continue working on this tomorrow.
 /* Use standard home page structure for work page background */
 .work-page .full-width-background {
     position: absolute;
-    top: -120px;
+    top: -160px;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
@@ -232,8 +512,8 @@ User will continue working on this tomorrow.
 .work-page .background-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center 30%;
 }
 
 /* Dark mode for work background */
@@ -241,19 +521,47 @@ body.dark-mode.work-page .full-width-background {
     opacity: 0.8;
 }
 
+/* Large screens - adjust positioning for better composition */
+@media (min-width: 1400px) {
+    .work-page .background-image {
+        object-position: center 35%;
+    }
+}
+
+/* Tablet responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .work-page .full-width-background {
+        height: 60vh;
+        top: -130px;
+    }
+    
+    .work-page .background-image {
+        object-position: center 28%;
+    }
+    
+    .work-page .page-content {
+        margin-top: 25vh !important;
+    }
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
     .work-page .full-width-background {
         height: 50vh;
+        top: -100px;
     }
     
-    .work-page .work-page-container {
-        margin-top: 70vh;
+    .work-page .background-image {
+        object-position: center 25%;
+    }
+    
+    .work-page .page-content {
+        margin-top: 25vh !important;
     }
     
     .work-page-container {
         width: 95% !important;
-        padding: 0 20px !important;
+        padding: 0 30px !important;
     }
     
     .work-page-container section {
@@ -279,9 +587,28 @@ body.dark-mode.work-page .full-width-background {
         text-align: left !important;
         min-width: auto !important;
         max-width: 100% !important;
+        white-space: nowrap !important;
     }
     
     .work-page-container .work-info .section-header {
         font-size: 1.5em !important;
+    }
+    
+    /* Responsive work navbar */
+    .work-nav-container {
+        padding: 0 30px;
+        max-width: 100%;
+    }
+    
+    .work-nav-title {
+        font-size: 14px;
+    }
+    
+    .work-nav-links {
+        gap: 10px;
+    }
+    
+    .work-nav-link {
+        font-size: 11px;
     }
 }

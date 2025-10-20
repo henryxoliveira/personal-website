@@ -136,6 +136,85 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNavbar();
 });
 
+// Work page navbar shrink on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const workNavbar = document.querySelector('.work-navbar');
+    if (!workNavbar) return; // Only run on work page
+    
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    
+    function updateWorkNavbar() {
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > 50;
+        const isScrolled = workNavbar.classList.contains('scrolled');
+        const isTransparent = workNavbar.classList.contains('transparent');
+        const isVisible = workNavbar.classList.contains('visible');
+        
+        // Handle transparency states
+        if (currentScrollY <= 10) {
+            // At the very top - fully transparent
+            if (!workNavbar.classList.contains('transparent')) {
+                workNavbar.classList.add('transitioning');
+                workNavbar.classList.add('transparent');
+                workNavbar.classList.remove('visible', 'scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    workNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else if (currentScrollY > 10 && currentScrollY <= 50) {
+            // Scrolled but not enough to shrink - visible with blur
+            if (!workNavbar.classList.contains('visible') || workNavbar.classList.contains('scrolled')) {
+                workNavbar.classList.add('transitioning');
+                workNavbar.classList.remove('transparent');
+                workNavbar.classList.add('visible');
+                workNavbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    workNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else {
+            // Scrolled enough to shrink - visible and shrunk
+            workNavbar.classList.remove('transparent');
+            workNavbar.classList.add('visible');
+            
+            if (shouldBeScrolled && !isScrolled) {
+                workNavbar.classList.add('transitioning');
+                workNavbar.classList.add('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    workNavbar.classList.remove('transitioning');
+                }, 600);
+            } else if (!shouldBeScrolled && isScrolled) {
+                workNavbar.classList.add('transitioning');
+                workNavbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    workNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    function handleWorkNavbarScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateWorkNavbar);
+            ticking = true;
+        }
+    }
+    
+    // Add scroll event listener for work navbar shrinking
+    window.addEventListener('scroll', handleWorkNavbarScroll, { passive: true });
+    
+    // Initial check
+    updateWorkNavbar();
+});
+
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
