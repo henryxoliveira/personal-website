@@ -82,6 +82,7 @@ body.work-page {
     padding: 10px 0;
     position: relative;
     transition: color 0.3s ease;
+    margin-left: -20px;
 }
 
 .work-nav-back:hover {
