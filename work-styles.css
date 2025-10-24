@@ -81,7 +81,11 @@ body.work-page {
     letter-spacing: 1px;
     padding: 10px 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
     margin-left: -20px;
 }
 
@@ -127,11 +131,16 @@ body.work-page {
 .work-nav-link {
     text-decoration: none;
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
+    letter-spacing: 1px;
     padding: 10px 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .work-nav-link:hover {
