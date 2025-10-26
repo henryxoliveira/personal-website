@@ -58,13 +58,14 @@ body.work-page {
 .work-nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 60px;
     position: relative;
-    transition: gap 0.3s ease;
+    transition: gap 0.3s ease, justify-content 0.3s ease;
 }
+
 
 /* Shrink nav container when scrolled */
 .work-navbar.scrolled .work-nav-container {
@@ -80,13 +81,19 @@ body.work-page {
     font-weight: 400;
     letter-spacing: 1px;
     padding: 10px 0;
-    position: relative;
-    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
+    position: absolute;
+    left: 40px;
+    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease, left 0.3s ease;
     cursor: pointer;
     display: inline-block;
     visibility: visible;
     opacity: 1;
-    margin-left: -20px;
+}
+
+/* Adjust back button position when scrolled */
+.work-navbar.scrolled .work-nav-back,
+.work-navbar.visible .work-nav-back {
+    left: 0px;
 }
 
 .work-nav-back:hover {
@@ -106,6 +113,25 @@ body.work-page {
 
 .work-nav-back:hover::after {
     width: 100%;
+}
+
+.work-nav-divider {
+    position: absolute;
+    left: 80px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, left 0.3s ease;
+}
+
+/* Show divider when scrolled */
+.work-navbar.scrolled .work-nav-divider,
+.work-navbar.visible .work-nav-divider {
+    opacity: 1;
+    visibility: visible;
+    left: 77px;
 }
 
 .work-nav-title {
@@ -206,6 +232,17 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-back::after {
     background-color: #ffffff;
 }
 
+/* Dark mode nav divider - keep dark color when transparent (at top) */
+body.dark-mode.work-page .work-nav-divider {
+    color: #333; /* Dark color to match light mode */
+}
+
+/* Dark mode nav divider - switch to white when navbar becomes visible */
+body.dark-mode.work-page .work-navbar.visible .work-nav-divider,
+body.dark-mode.work-page .work-navbar.scrolled .work-nav-divider {
+    color: #ffffff;
+}
+
 body.dark-mode.work-page .work-nav-title {
     color: #ffffff;
 }
@@ -265,8 +302,8 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
 
 /* New container approach - use standard structure */
 .work-page .page-content {
-    margin-top: 25vh !important;
-    padding: 0 4% 400px 4% !important;
+    margin-top: 5vh !important;
+    padding: 0 4% 0px 4% !important;
     max-width: 1200px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -282,7 +319,7 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     width: 90% !important;
     max-width: 1400px !important;
     margin: 0 auto !important;
-    padding: 0 60px 100px 60px !important;
+    padding: 0 60px 0px 60px !important;
     box-sizing: border-box !important;
     overflow-x: visible !important;
     margin-top: 0px !important;
@@ -329,7 +366,6 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     word-wrap: break-word !important;
     position: relative !important;
     z-index: 1002 !important;
-    background: rgba(251, 249, 242, 0.95) !important;
 }
 
 /* Work header layout */
@@ -375,13 +411,10 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     color: inherit !important;
     position: relative !important;
     transition: color 0.3s ease !important;
+    display: inline-block !important;
 }
 
-.work-page-container .work-info .section-header a:hover {
-    color: #000 !important;
-}
-
-.work-page-container .work-info .section-header a::after {
+.work-page-container .work-info .section-header a::before {
     content: '' !important;
     position: absolute !important;
     bottom: -5px !important;
@@ -392,8 +425,16 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     transition: width 0.3s ease !important;
 }
 
-.work-page-container .work-info .section-header a:hover::after {
+.work-page-container .work-info .section-header a:hover {
+    color: #000 !important;
+}
+
+.work-page-container .work-info .section-header a:hover::before {
     width: 100% !important;
+}
+
+.work-page-container .work-info .section-header a:hover::after {
+    content: ' >' !important;
 }
 
 .work-page-container .job-title {
@@ -454,12 +495,12 @@ body.dark-mode.work-page .work-page-container .work-info .section-header a {
     color: inherit !important;
 }
 
-body.dark-mode.work-page .work-page-container .work-info .section-header a:hover {
-    color: #cccccc !important;
+body.dark-mode.work-page .work-page-container .work-info .section-header a::before {
+    background-color: #ffffff !important;
 }
 
-body.dark-mode.work-page .work-page-container .work-info .section-header a::after {
-    background-color: #ffffff !important;
+body.dark-mode.work-page .work-page-container .work-info .section-header a:hover {
+    color: #cccccc !important;
 }
 
 body.dark-mode.work-page .work-page-container .job-title {
@@ -507,6 +548,31 @@ NEXT APPROACHES TO TRY:
 CURRENT STATE: Image still not positioned high enough to show more bridge/skyline content.
 User will continue working on this tomorrow.
 */
+/* Work Experience Title Overlay */
+.work-title-overlay {
+    position: absolute;
+    top: 180px;
+    left: 7%;
+    background: transparent;
+    z-index: 9999;
+    max-width: 600px;
+    padding: 0;
+}
+
+.work-title-overlay h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    line-height: 1.1;
+}
+
+/* Dark mode for title overlay */
+body.dark-mode.work-page .work-title-overlay h1 {
+    color: #000000;
+    font-size: 3.5em;
+}
+
 /* Use standard home page structure for work page background */
 .work-page .full-width-background {
     position: absolute;
@@ -550,7 +616,7 @@ body.dark-mode.work-page .full-width-background {
     }
     
     .work-page .page-content {
-        margin-top: 25vh !important;
+        margin-top: 5vh !important;
     }
 }
 
@@ -566,12 +632,28 @@ body.dark-mode.work-page .full-width-background {
     }
     
     .work-page .page-content {
-        margin-top: 25vh !important;
+        margin-top: 5vh !important;
     }
     
     .work-page-container {
         width: 95% !important;
         padding: 0 30px !important;
+    }
+    
+    /* Mobile title overlay */
+    .work-title-overlay {
+        position: relative;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 350px;
+        text-align: center;
+    }
+    
+    .work-title-overlay h1 {
+        font-size: 2.5em;
+        line-height: 1.1;
     }
     
     .work-page-container section {
