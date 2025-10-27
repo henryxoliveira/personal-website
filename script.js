@@ -211,8 +211,93 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll event listener for work navbar shrinking
     window.addEventListener('scroll', handleWorkNavbarScroll, { passive: true });
     
+    // Set initial navbar state
+    workNavbar.classList.add('transparent');
+    
     // Initial check
     updateWorkNavbar();
+});
+
+// University page navbar shrink on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const universityNavbar = document.querySelector('.university-navbar');
+    if (!universityNavbar) return; // Only run on university page
+    
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    
+    function updateUniversityNavbar() {
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > 50;
+        const isScrolled = universityNavbar.classList.contains('scrolled');
+        const isTransparent = universityNavbar.classList.contains('transparent');
+        const isVisible = universityNavbar.classList.contains('visible');
+        
+        // Handle transparency states
+        if (currentScrollY <= 10) {
+            // At the very top - fully transparent
+            if (!universityNavbar.classList.contains('transparent')) {
+                universityNavbar.classList.add('transitioning');
+                universityNavbar.classList.add('transparent');
+                universityNavbar.classList.remove('visible', 'scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    universityNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else if (currentScrollY > 10 && currentScrollY <= 50) {
+            // Scrolled but not enough to shrink - visible with blur
+            if (!universityNavbar.classList.contains('visible') || universityNavbar.classList.contains('scrolled')) {
+                universityNavbar.classList.add('transitioning');
+                universityNavbar.classList.remove('transparent');
+                universityNavbar.classList.add('visible');
+                universityNavbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    universityNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else {
+            // Scrolled enough to shrink - visible and shrunk
+            universityNavbar.classList.remove('transparent');
+            universityNavbar.classList.add('visible');
+            
+            if (shouldBeScrolled && !isScrolled) {
+                universityNavbar.classList.add('transitioning');
+                universityNavbar.classList.add('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    universityNavbar.classList.remove('transitioning');
+                }, 600);
+            } else if (!shouldBeScrolled && isScrolled) {
+                universityNavbar.classList.add('transitioning');
+                universityNavbar.classList.remove('scrolled');
+                // Show indicator after transition completes
+                setTimeout(() => {
+                    universityNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    function handleUniversityNavbarScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateUniversityNavbar);
+            ticking = true;
+        }
+    }
+    
+    // Add scroll event listener for university navbar shrinking
+    window.addEventListener('scroll', handleUniversityNavbarScroll, { passive: true });
+    
+    // Set initial navbar state
+    universityNavbar.classList.add('transparent');
+    
+    // Initial check
+    updateUniversityNavbar();
 });
 
 // Navigation functionality

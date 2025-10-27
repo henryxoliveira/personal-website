@@ -12,17 +12,18 @@
     <link rel="stylesheet" href="university-styles.css">
 </head>
 <body class="university-page">
-    <!-- Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html#home" class="nav-link">HOME</a>
-            <a href="index.html#about" class="nav-link">ABOUT</a>
-            <a href="index.html#work" class="nav-link">WORK</a>
-            <a href="projects.html" class="nav-link">PROJECTS</a>
-            <a href="university.html" class="nav-link active">UNIVERSITY</a>
-            <a href="publications.html" class="nav-link">PUBLICATIONS</a>
-            <a href="index.html#connect" class="nav-link">CONNECT</a>
-            <div class="nav-indicator"></div>
+    <!-- Custom University Page Navigation Header -->
+    <nav class="university-navbar">
+        <div class="university-nav-container">
+            <a href="index.html" class="university-nav-back">< BACK</a>
+            <span class="university-nav-divider">|</span>
+            <div class="university-nav-links">
+                <a href="#scif" class="university-nav-link">SCIF</a>
+                <a href="#chalkboard" class="university-nav-link">CHALKBOARD</a>
+                <a href="#beach" class="university-nav-link">BEACH</a>
+                <a href="#lbsa" class="university-nav-link">LBSA</a>
+                <a href="#academics" class="university-nav-link">ACADEMICS</a>
+            </div>
         </div>
         
         <!-- Dark Mode Toggle Button -->
@@ -49,16 +50,20 @@
         <!-- Hero content -->
     </section>
     
+    <!-- Full Width Background Image -->
+    <div class="full-width-background">
+        <img src="assets/scdi.jpg" alt="Santa Clara University Background" class="background-image">
+    </div>
+
+    <!-- University Title Overlay -->
+    <div class="university-title-overlay">
+        <h1>University</h1>
+    </div>
 
     <div class="scroll-container">
         <!-- Main Content -->
         <div class="page-content university-content">
-        <div class="back-button-container">
-            <a href="index.html" class="back-button">< BACK</a>
-        </div>
-        
-        <div class="university-page-container">
-            <h1 class="university-title">University</h1>
+            <div class="university-page-container">
             
             <!-- SCIF Section -->
             <section id="scif">
@@ -70,6 +75,18 @@
                 <p>As a member of the Santa Clara Investment Fund, I've gained hands-on experience in financial analysis and investment research within a student-managed portfolio.</p>
                 <p>I've contributed to research memos covering technology sector trends, analyzing market dynamics and investment opportunities in emerging tech companies.</p>
                 <p>This experience has strengthened my analytical skills and provided practical insights into how financial markets operate, complementing my dual-major coursework.</p>
+            </section>
+
+            <!-- Chalkboard Section -->
+            <section id="chalkboard">
+                <div class="university-header">
+                    <div class="university-info">
+                        <h1 class="section-header">CHALKBOARD</h1>
+                    </div>
+                </div>
+                <p>Chalkboard is an exclusive, high-caliber ecosystem where exceptional student founders build industry-defining companies.</p>
+                <p>As a member of this community, I'm part of an interdisciplinary network that unites deep thinkers, domain experts, researchers, and creative minds to cultivate breakthrough innovations.</p>
+                <p>Through Chalkboard, I've gained access to top-tier venture capital, world-class mentors, and robust hiring pipelines, empowering me to turn groundbreaking ideas into industry-defining ventures.</p>
             </section>
 
             <!-- BEACH Section -->
@@ -96,23 +113,18 @@
                 <p>This involvement has allowed me to give back to the community while developing leadership skills and cultural awareness that enhance my professional capabilities.</p>
             </section>
 
-            <!-- Dual-Major Section -->
-            <section id="dual-major">
+            <!-- Academics Section -->
+            <section id="academics">
                 <div class="university-header">
                     <div class="university-info">
-                        <h1 class="section-header">DUAL-MAJOR: COMPUTER SCIENCE & FINANCE</h1>
+                        <h1 class="section-header">ACADEMICS</h1>
                     </div>
                 </div>
-                <p>My dual-major in Computer Science and Finance, combined with a Mathematics minor, reflects my passion for the intersection of technology and business.</p>
+                <p>I'm dual-majoring in Computer Science and Finance with a Mathematics minor at Santa Clara University.</p>
                 <p>This academic path has equipped me with both technical programming skills and financial analysis capabilities, preparing me for roles that require understanding of both domains.</p>
                 <p>The combination has been particularly valuable in my startup work and investment research, where technical knowledge and financial acumen work together to drive informed decision-making.</p>
             </section>
-        </div>
-    </div>
-
-        <!-- Bottom Back Button -->
-        <div class="back-button-container" style="margin-top: 40px; margin-bottom: 40px; padding-left: 4%;">
-            <a href="index.html" class="back-button">< BACK</a>
+            </div>
         </div>
         
         <!-- Footer -->
