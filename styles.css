@@ -310,6 +310,11 @@ body.dark-mode .see-more-button::before {
     background-color: #ffffff;
 }
 
+/* Dark mode for project name spans */
+body.dark-mode section span {
+    color: #ffffff !important;
+}
+
 body.dark-mode .back-button {
     color: #ffffff;
 }
