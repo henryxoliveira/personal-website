@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Navbar shrink on scroll
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return; // Skip if navbar doesn't exist (e.g., university page)
     let ticking = false;
     let lastScrollY = window.scrollY;
     
