@@ -266,7 +266,7 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     overflow: visible !important;
     position: relative !important;
     z-index: 999 !important;
-    padding-top: max(calc(70vh - 160px + 20px), 200px) !important;
+    padding-top: 50px !important;
     background-color: #FBF9F2;
     isolation: isolate;
 }
@@ -510,7 +510,7 @@ body.dark-mode.university-page .full-width-background {
     }
     
     .university-page .scroll-container {
-        padding-top: max(calc(70vh - 160px + 20px), 200px) !important;
+        padding-top: 50px !important;
     }
 }
 
@@ -526,7 +526,7 @@ body.dark-mode.university-page .full-width-background {
     }
     
     .university-page .scroll-container {
-        padding-top: max(calc(60vh - 130px + 20px), 180px) !important;
+        padding-top: 50px !important;
     }
 }
 
@@ -542,7 +542,7 @@ body.dark-mode.university-page .full-width-background {
     }
     
     .university-page .scroll-container {
-        padding-top: max(calc(50vh - 100px + 20px), 150px) !important;
+        padding-top: 50px !important;
     }
     
     .university-page-container {
