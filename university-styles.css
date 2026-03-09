@@ -271,6 +271,20 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     isolation: isolate;
 }
 
+/* Back button positioning (matches projects page layout) */
+.university-page .back-button-container {
+    text-align: left !important;
+    margin-bottom: 20px !important;
+    padding-left: 40px !important;
+}
+
+/* Remove unintended whitespace from hero when no background image */
+.university-page #university-hero {
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 .university-page .dark-mode-toggle {
     position: absolute !important;
     top: 50% !important;
@@ -300,7 +314,7 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     width: 90% !important;
     max-width: 1400px !important;
     margin: 0 auto !important;
-    padding: 0 60px 0px 60px !important;
+    padding: 0 40px 0px 40px !important;
     box-sizing: border-box !important;
     overflow-x: visible !important;
     margin-top: 0px !important;
@@ -312,7 +326,7 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
 .university-page-container .university-title {
     font-size: 2.5em !important;
     font-weight: 300 !important;
-    margin-bottom: 80px !important;
+    margin-bottom: 40px !important;
     color: #333 !important;
     text-align: left !important;
     text-transform: uppercase !important;
