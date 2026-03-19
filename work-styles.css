@@ -117,25 +117,6 @@ body.work-page {
     width: 100%;
 }
 
-.work-nav-divider {
-    position: absolute;
-    left: 80px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 400;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, left 0.3s ease;
-}
-
-/* Show divider when scrolled */
-.work-navbar.scrolled .work-nav-divider,
-.work-navbar.visible .work-nav-divider {
-    opacity: 1;
-    visibility: visible;
-    left: 77px;
-}
-
 .work-nav-title {
     position: absolute;
     left: 50%;
@@ -234,17 +215,6 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-back::after {
     background-color: #ffffff;
 }
 
-/* Dark mode nav divider - keep dark color when transparent (at top) */
-body.dark-mode.work-page .work-nav-divider {
-    color: #333; /* Dark color to match light mode */
-}
-
-/* Dark mode nav divider - switch to white when navbar becomes visible */
-body.dark-mode.work-page .work-navbar.visible .work-nav-divider,
-body.dark-mode.work-page .work-navbar.scrolled .work-nav-divider {
-    color: #ffffff;
-}
-
 body.dark-mode.work-page .work-nav-title {
     color: #ffffff;
 }
@@ -292,6 +262,7 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     overflow: visible !important;
     position: relative !important;
     z-index: 999 !important;
+    padding-top: 75px !important;
 }
 
 .work-page .dark-mode-toggle {
@@ -304,7 +275,7 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
 
 /* New container approach - use standard structure */
 .work-page .page-content {
-    margin-top: 5vh !important;
+    margin-top: 0 !important;
     padding: 0 4% 0px 4% !important;
     max-width: 1200px !important;
     margin-left: auto !important;
@@ -342,7 +313,8 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
 .work-page-container .work-title {
     font-size: 2.5em !important;
     font-weight: 300 !important;
-    margin-bottom: 80px !important;
+    margin-top: 24px !important;
+    margin-bottom: 40px !important;
     color: #333 !important;
     text-align: left !important;
     text-transform: uppercase !important;
@@ -519,145 +491,20 @@ body.dark-mode.work-page .work-page-container section p {
 
 
 
-/* Work page background image styling */
-/* 
-TRIAL AND ERROR LOG - Work Experience Background Image Positioning
-===============================================================
-
-ISSUE: User wants to move the Golden Gate Bridge background image higher to show more of the top portion (bridge towers, skyline) and less of the bottom (water, foreground).
-
-ATTEMPTED SOLUTIONS:
-1. object-position: center 80% → center 20% → center 10%
-   - RESULT: Minimal visible change, image positioning adjustments didn't provide significant movement
-   
-2. object-position: center center → center top
-   - RESULT: No noticeable improvement
-   
-3. Height expansion approach: height: 100% → 150% with object-position: center top
-   - RESULT: Made it worse - caused distortion/stretching of the image
-   
-4. Reverted back to: height: 100% with object-position: center 10%
-   - RESULT: Current state - still not achieving desired effect
-
-NEXT APPROACHES TO TRY:
-- Try negative transform values: transform: translateY(-20px) or similar
-- Adjust container height and use different object-fit values
-- Consider using background-image CSS property instead of img element
-- Try object-position values like "center 0%" or "center top"
-- Consider using clip-path to crop specific areas
-- Try adjusting the container's top position or using margin-top on the background
-
-CURRENT STATE: Image still not positioned high enough to show more bridge/skyline content.
-User will continue working on this tomorrow.
-*/
-/* Work Experience Title Overlay */
-.work-title-overlay {
-    position: absolute;
-    top: 180px;
-    left: 7%;
-    background: transparent;
-    z-index: 9999;
-    max-width: 600px;
-    padding: 0;
-}
-
-.work-title-overlay h1 {
-    font-size: 3.5em;
-    font-weight: bold;
-    margin: 0;
-    color: #333;
-    line-height: 1.1;
-}
-
-/* Dark mode for title overlay */
-body.dark-mode.work-page .work-title-overlay h1 {
-    color: #000000;
-    font-size: 3.5em;
-}
-
-/* Use standard home page structure for work page background */
-.work-page .full-width-background {
-    position: absolute;
-    top: -160px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 70vh;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.work-page .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-}
-
-/* Dark mode for work background */
-body.dark-mode.work-page .full-width-background {
-    opacity: 0.8;
-}
-
-/* Large screens - adjust positioning for better composition */
-@media (min-width: 1400px) {
-    .work-page .background-image {
-        object-position: center 35%;
-    }
-}
-
-/* Tablet responsive */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .work-page .full-width-background {
-        height: 60vh;
-        top: -130px;
-    }
-    
-    .work-page .background-image {
-        object-position: center 28%;
-    }
-    
-    .work-page .page-content {
-        margin-top: 5vh !important;
-    }
+/* Remove unintended whitespace from hero when no background image */
+.work-page #work-hero {
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-    .work-page .full-width-background {
-        height: 50vh;
-        top: -100px;
-    }
-    
-    .work-page .background-image {
-        object-position: center 25%;
-    }
-    
-    .work-page .page-content {
-        margin-top: 5vh !important;
-    }
-    
     .work-page-container {
         width: 95% !important;
         padding: 0 30px !important;
     }
-    
-    /* Mobile title overlay */
-    .work-title-overlay {
-        position: relative;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 350px;
-        text-align: center;
-    }
-    
-    .work-title-overlay h1 {
-        font-size: 2.5em;
-        line-height: 1.1;
-    }
-    
+
     .work-page-container section {
         padding: 15px 0 !important;
     }

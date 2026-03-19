@@ -219,6 +219,77 @@ document.addEventListener('DOMContentLoaded', function() {
     updateWorkNavbar();
 });
 
+// Projects page navbar shrink on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const projectsNavbar = document.querySelector('.projects-navbar');
+    if (!projectsNavbar) return; // Only run on projects page
+
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+
+    function updateProjectsNavbar() {
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > 50;
+        const isScrolled = projectsNavbar.classList.contains('scrolled');
+
+        // Handle transparency states
+        if (currentScrollY <= 10) {
+            // At the very top - fully transparent
+            if (!projectsNavbar.classList.contains('transparent')) {
+                projectsNavbar.classList.add('transitioning');
+                projectsNavbar.classList.add('transparent');
+                projectsNavbar.classList.remove('visible', 'scrolled');
+                setTimeout(() => {
+                    projectsNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else if (currentScrollY > 10 && currentScrollY <= 50) {
+            // Scrolled but not enough to shrink - visible with blur
+            if (!projectsNavbar.classList.contains('visible') || projectsNavbar.classList.contains('scrolled')) {
+                projectsNavbar.classList.add('transitioning');
+                projectsNavbar.classList.remove('transparent');
+                projectsNavbar.classList.add('visible');
+                projectsNavbar.classList.remove('scrolled');
+                setTimeout(() => {
+                    projectsNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        } else {
+            // Scrolled enough to shrink - visible and shrunk
+            projectsNavbar.classList.remove('transparent');
+            projectsNavbar.classList.add('visible');
+
+            if (shouldBeScrolled && !isScrolled) {
+                projectsNavbar.classList.add('transitioning');
+                projectsNavbar.classList.add('scrolled');
+                setTimeout(() => {
+                    projectsNavbar.classList.remove('transitioning');
+                }, 600);
+            } else if (!shouldBeScrolled && isScrolled) {
+                projectsNavbar.classList.add('transitioning');
+                projectsNavbar.classList.remove('scrolled');
+                setTimeout(() => {
+                    projectsNavbar.classList.remove('transitioning');
+                }, 600);
+            }
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    function handleProjectsNavbarScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateProjectsNavbar);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', handleProjectsNavbarScroll, { passive: true });
+    projectsNavbar.classList.add('transparent');
+    updateProjectsNavbar();
+});
+
 // University page navbar shrink on scroll
 document.addEventListener('DOMContentLoaded', function() {
     const universityNavbar = document.querySelector('.university-navbar');

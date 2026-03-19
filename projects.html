@@ -9,20 +9,20 @@
     <title>Projects - Henrique Oliveira</title>
     <link rel="icon" type="image/png" href="assets/image.png">
     <link rel="stylesheet" href="styles.css?v=11">
-    <link rel="stylesheet" href="projects-styles.css">
+    <link rel="stylesheet" href="projects-styles.css?v=11">
 </head>
 <body class="projects-page">
-    <!-- Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html#home" class="nav-link">HOME</a>
-            <a href="index.html#about" class="nav-link">ABOUT</a>
-            <a href="index.html#work" class="nav-link">WORK</a>
-            <a href="projects.html" class="nav-link active">PROJECTS</a>
-            <a href="university.html" class="nav-link">UNIVERSITY</a>
-            <a href="publications.html" class="nav-link">PUBLICATIONS</a>
-            <a href="index.html#connect" class="nav-link">CONNECT</a>
-            <div class="nav-indicator"></div>
+    <!-- Custom Projects Page Navigation Header -->
+    <nav class="projects-navbar">
+        <div class="projects-nav-container">
+            <a href="index.html" class="projects-nav-back">< BACK</a>
+            <div class="projects-nav-links">
+                <a href="#parkd" class="projects-nav-link">PARKD</a>
+                <a href="#threaded-nexus" class="projects-nav-link">THREADED NEXUS</a>
+                <a href="#tower-of-hanoi" class="projects-nav-link">TOWER OF HANOI</a>
+                <a href="#crawlai" class="projects-nav-link">CRAWLAI</a>
+                <a href="#this-website" class="projects-nav-link">WEBSITE</a>
+            </div>
         </div>
         
         <!-- Dark Mode Toggle Button -->
@@ -53,10 +53,6 @@
     <div class="scroll-container">
         <!-- Main Content -->
         <div class="page-content projects-content">
-        <div class="back-button-container">
-            <a href="index.html" class="back-button">< BACK</a>
-        </div>
-        
         <div class="projects-page-container">
             <h1 class="projects-title">Projects</h1>
             
@@ -64,7 +60,7 @@
             <section id="parkd">
                 <div class="projects-header">
                     <div class="projects-info">
-                        <h1 class="section-header">PARKD</h1>
+                        <h1 class="section-header"><a href="https://parkd.io" target="_blank" rel="noopener noreferrer">PARKD</a></h1>
                     </div>
                 </div>
                 <p>Co-founded and developed an end-to-end platform that helps schools modernize their parking management systems.</p>
@@ -72,11 +68,26 @@
                 <p>Led product development, user interface design, and agile project management for a startup focused on solving real campus infrastructure challenges.</p>
             </section>
 
+            <!-- Threaded Nexus Project -->
+            <section id="threaded-nexus">
+                <div class="projects-header">
+                    <div class="projects-info">
+                        <h1 class="section-header"><a href="https://github.com/henryxoliveira/threaded-nexus-v1" target="_blank" rel="noopener noreferrer">THREADED NEXUS</a></h1>
+                    </div>
+                </div>
+                <p>Threaded Nexus is an always-on personal CRM and outreach copilot that transforms your everyday communication (emails, meetings, and interactions) into structured, actionable intelligence.</p>
+                <p>It continuously ingests activity from tools like Gmail and Google Calendar, builds a dynamic relationship graph of people, companies, and conversations, and uses LLMs to summarize threads, extract action items, and draft follow-ups.</p>
+                <p>Instead of manually tracking relationships or letting opportunities slip, it proactively surfaces who to reach out to, what to say, and when.</p>
+                <p>All actions flow through a permissioned, auditable tool system, ensuring safe automation while maintaining human control.</p>
+                <p>Built as a modern event-driven system with a robust data model and extensible architecture, Threaded Nexus replaces fragmented workflows with a single, intelligent layer for managing and scaling meaningful relationships.</p>
+                <p>It's also a work in progress, more coming soon.</p>
+            </section>
+
             <!-- Tower of Hanoi Project -->
             <section id="tower-of-hanoi">
                 <div class="projects-header">
                     <div class="projects-info">
-                        <h1 class="section-header">TOWER OF HANOI</h1>
+                        <h1 class="section-header"><a href="https://github.com/henryxoliveira/tower-of-hanoi" target="_blank" rel="noopener noreferrer">TOWER OF HANOI</a></h1>
                     </div>
                 </div>
                 <p>Implemented the classic Tower of Hanoi puzzle with an interactive web interface to demonstrate recursive algorithms.</p>
@@ -88,7 +99,7 @@
             <section id="crawlai">
                 <div class="projects-header">
                     <div class="projects-info">
-                        <h1 class="section-header">CRAWLAI</h1>
+                        <h1 class="section-header"><a href="https://www.crawlai.org/" target="_blank" rel="noopener noreferrer">CRAWLAI</a></h1>
                     </div>
                 </div>
                 <p>CrawlAI is a no-code platform for building AI assistants that combine web crawling, custom data, and LLMs into powerful, personalized workflows.</p>
@@ -101,7 +112,7 @@
             <section id="this-website">
                 <div class="projects-header">
                     <div class="projects-info">
-                        <h1 class="section-header">THIS WEBSITE</h1>
+                        <h1 class="section-header"><a href="https://github.com/henryxoliveira/personal-website" target="_blank" rel="noopener noreferrer">THIS WEBSITE</a></h1>
                     </div>
                 </div>
                 <p>Designed and developed this personal portfolio website from scratch using HTML, CSS, and JavaScript.</p>
