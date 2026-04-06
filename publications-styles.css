@@ -169,6 +169,7 @@ body.dark-mode.publications-page .full-width-background {
     box-sizing: border-box !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
+    -webkit-hyphens: auto !important;
     hyphens: auto !important;
 }
 
