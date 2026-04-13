@@ -389,13 +389,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make function available globally
     window.forceIndicatorUpdate = forceIndicatorUpdate;
     
-    // Set active navigation link for subpages
+    // Set active navigation link for subpages (compare href strings — avoid querySelector injection from pathname)
     if (isSubpage) {
-        const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
-        const activeLink = document.querySelector(`[href="index.html#${currentPage}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+        const segment = window.location.pathname.split('/').pop() || '';
+        const currentPage = segment.replace(/\.html$/i, '');
+        const expectedHref = `index.html#${currentPage}`;
+        document.querySelectorAll('.nav-link').forEach(function (link) {
+            if (link.getAttribute('href') === expectedHref) {
+                link.classList.add('active');
+            }
+        });
     }
     
     // Function to update active section based on scroll position (only for main page)
@@ -574,12 +577,18 @@ document.addEventListener('DOMContentLoaded', function() {
         backButton.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Check if there's a referrer and it's from the same domain
-            if (document.referrer && document.referrer.includes(window.location.hostname)) {
-                // Go back to the previous page
+            // Same-origin only: substring match on hostname is unsafe (e.g. attacker.example.com contains "example.com")
+            let sameOriginReferrer = false;
+            try {
+                if (document.referrer) {
+                    sameOriginReferrer = new URL(document.referrer).origin === window.location.origin;
+                }
+            } catch (_) {
+                sameOriginReferrer = false;
+            }
+            if (sameOriginReferrer) {
                 window.history.back();
             } else {
-                // Default to home page
                 window.location.href = 'index.html';
             }
         });
