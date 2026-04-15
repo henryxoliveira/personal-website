@@ -116,27 +116,6 @@ body.university-page {
     width: 100%;
 }
 
-.university-nav-divider {
-    position: absolute;
-    left: calc((40px + 70px + 150px) / 2);
-    color: #333;
-    font-size: 16px;
-    font-weight: 400;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, left 0.3s ease;
-    transform: translateX(-50%);
-}
-
-/* Show divider when scrolled */
-.university-navbar.scrolled .university-nav-divider,
-.university-navbar.visible .university-nav-divider {
-    opacity: 1;
-    visibility: visible;
-    left: calc((0px + 70px + 150px) / 2);
-    transform: translateX(-50%);
-}
-
 .university-nav-links {
     display: flex;
     gap: 20px;
@@ -216,15 +195,6 @@ body.dark-mode.university-page .university-nav-back::after {
 body.dark-mode.university-page .university-navbar.visible .university-nav-back::after,
 body.dark-mode.university-page .university-navbar.scrolled .university-nav-back::after {
     background-color: #ffffff;
-}
-
-body.dark-mode.university-page .university-nav-divider {
-    color: #333;
-}
-
-body.dark-mode.university-page .university-navbar.visible .university-nav-divider,
-body.dark-mode.university-page .university-navbar.scrolled .university-nav-divider {
-    color: #ffffff;
 }
 
 body.dark-mode.university-page .university-nav-link {
@@ -397,6 +367,44 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     display: none !important;
 }
 
+/* Section title links — match projects page (underline grow + " >" on hover) */
+.university-page-container .university-info .section-header a {
+    text-decoration: none !important;
+    color: inherit !important;
+    position: relative !important;
+    transition: color 0.3s ease !important;
+    display: inline-block !important;
+}
+
+.university-page-container .university-info .section-header a:visited,
+.university-page-container .university-info .section-header a:active {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.university-page-container .university-info .section-header a::before {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: #555 !important;
+    transition: width 0.3s ease !important;
+}
+
+.university-page-container .university-info .section-header a:hover {
+    color: #000 !important;
+}
+
+.university-page-container .university-info .section-header a:hover::before {
+    width: 100% !important;
+}
+
+.university-page-container .university-info .section-header a:hover::after {
+    content: ' >' !important;
+}
+
 /* Paragraph text with proper constraints */
 .university-page-container section p {
     font-size: 1.1em !important;
@@ -411,7 +419,7 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     hyphens: auto !important;
 }
 
-/* List styling to match paragraph text */
+/* List styling to match paragraph text (li uses 1em so size does not compound off ol/ul) */
 .university-page-container section ol,
 .university-page-container section ul {
     font-size: 1.1em !important;
@@ -422,10 +430,27 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
 }
 
 .university-page-container section li {
-    font-size: 1.1em !important;
+    font-size: 1em !important;
     line-height: 1.6 !important;
     margin-bottom: 10px !important;
     color: #333 !important;
+}
+
+/* Academics: indent numbered list so it reads as a nested block */
+.university-page-container #academics ol {
+    margin-left: 1.25em !important;
+    padding-left: 1.75em !important;
+}
+
+.university-page-container #academics ol li::marker {
+    font-size: 1em !important;
+    font-weight: 400 !important;
+}
+
+/* Academics: bullet list aligned with numbered list above */
+.university-page-container #academics ul {
+    margin-left: 1.25em !important;
+    padding-left: 1.75em !important;
 }
 
 /* Dark mode styles */
@@ -444,6 +469,23 @@ body.dark-mode.university-page .university-page-container .university-title {
 
 body.dark-mode.university-page .university-page-container .university-info .section-header {
     color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-page-container .university-info .section-header a {
+    color: inherit !important;
+}
+
+body.dark-mode.university-page .university-page-container .university-info .section-header a:visited,
+body.dark-mode.university-page .university-page-container .university-info .section-header a:active {
+    color: inherit !important;
+}
+
+body.dark-mode.university-page .university-page-container .university-info .section-header a::before {
+    background-color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-page-container .university-info .section-header a:hover {
+    color: #cccccc !important;
 }
 
 body.dark-mode.university-page .university-page-container section p {
