@@ -576,6 +576,56 @@ body.dark-mode section p a:hover {
     color: #cccccc;
 }
 
+/* Inline body links: same hover underline + chevron as .see-more-button */
+section p a.see-more-inline {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    color: #333;
+    transition: color 0.3s ease;
+    padding-bottom: 3px;
+}
+
+section p a.see-more-inline:hover {
+    color: #000;
+}
+
+section p a.see-more-inline::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #555;
+    transition: width 0.3s ease;
+}
+
+section p a.see-more-inline:hover::before {
+    width: 100%;
+}
+
+section p a.see-more-inline::after {
+    content: '';
+}
+
+section p a.see-more-inline:hover::after {
+    content: '>';
+    margin-left: 2px;
+}
+
+body.dark-mode section p a.see-more-inline {
+    color: #ffffff;
+}
+
+body.dark-mode section p a.see-more-inline:hover {
+    color: #cccccc;
+}
+
+body.dark-mode section p a.see-more-inline::before {
+    background-color: #ffffff;
+}
+
 .about-content {
     display: flex;
     align-items: flex-start;
