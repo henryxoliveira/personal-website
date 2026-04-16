@@ -419,6 +419,13 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     hyphens: auto !important;
 }
 
+/* Quote style matching About section treatment */
+.university-page-container section p.university-quote {
+    margin-left: 12px !important;
+    border-left: 2px solid #555 !important;
+    padding-left: 15px !important;
+}
+
 /* List styling to match paragraph text (li uses 1em so size does not compound off ol/ul) */
 .university-page-container section ol,
 .university-page-container section ul {
@@ -490,6 +497,10 @@ body.dark-mode.university-page .university-page-container .university-info .sect
 
 body.dark-mode.university-page .university-page-container section p {
     color: #ffffff !important;
+}
+
+body.dark-mode.university-page .university-page-container section p.university-quote {
+    border-left-color: #ffffff !important;
 }
 
 body.dark-mode.university-page .university-page-container section ol,
