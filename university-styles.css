@@ -224,6 +224,16 @@ body.dark-mode.university-page .university-navbar.scrolled .university-nav-link:
     background-color: #ffffff;
 }
 
+/* Dark mode toggle icon colors for custom university navbar states */
+body.dark-mode.university-page .dark-mode-toggle .moon-icon {
+    color: #333;
+}
+
+body.dark-mode.university-page .university-navbar.visible .dark-mode-toggle .moon-icon,
+body.dark-mode.university-page .university-navbar.scrolled .dark-mode-toggle .moon-icon {
+    color: #ffffff;
+}
+
 /* Hide the default navbar on university page */
 .university-page .navbar {
     display: none !important;

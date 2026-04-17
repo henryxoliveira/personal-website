@@ -215,6 +215,16 @@ body.dark-mode.projects-page .projects-navbar.scrolled a:visited {
     color: #ffffff !important;
 }
 
+/* Dark mode toggle icon colors for custom projects navbar states */
+body.dark-mode.projects-page .dark-mode-toggle .moon-icon {
+    color: #333;
+}
+
+body.dark-mode.projects-page .projects-navbar.visible .dark-mode-toggle .moon-icon,
+body.dark-mode.projects-page .projects-navbar.scrolled .dark-mode-toggle .moon-icon {
+    color: #ffffff;
+}
+
 /* Hide default navbar style on projects page */
 .projects-page .navbar {
     display: none !important;

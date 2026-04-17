@@ -250,6 +250,16 @@ body.dark-mode.work-page .work-navbar.scrolled .work-nav-link::after {
     background-color: #ffffff;
 }
 
+/* Dark mode toggle icon colors for custom work navbar states */
+body.dark-mode.work-page .dark-mode-toggle .moon-icon {
+    color: #333;
+}
+
+body.dark-mode.work-page .work-navbar.visible .dark-mode-toggle .moon-icon,
+body.dark-mode.work-page .work-navbar.scrolled .dark-mode-toggle .moon-icon {
+    color: #ffffff;
+}
+
 /* Hide the default navbar on work page */
 .work-page .navbar {
     display: none !important;
