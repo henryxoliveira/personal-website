@@ -137,7 +137,7 @@ body.work-page {
     min-width: 0;
     justify-content: center;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
