@@ -455,6 +455,18 @@ body.dark-mode.projects-page .full-width-background {
     hyphens: auto !important;
 }
 
+/* Parkd: alternating flush-left and indented body copy (matches design) */
+.projects-page-container #parkd p.projects-body-indent,
+.projects-page-container #parkd ul.projects-body-indent {
+    padding-left: 1.75em !important;
+    margin-left: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.projects-page-container #parkd ul.projects-body-indent {
+    list-style-position: outside !important;
+}
+
 /* Dark mode styles */
 body.dark-mode.projects-page {
     background-color: #1a1a1a !important;
