@@ -136,8 +136,7 @@ body.work-page {
     flex: 1 1 auto;
     min-width: 0;
     justify-content: center;
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -596,6 +595,8 @@ body.dark-mode.work-page .work-page-container .work-why-pm-subsection {
     
     .work-nav-links {
         gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
     
     .work-nav-link {
