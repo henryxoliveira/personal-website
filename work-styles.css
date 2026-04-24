@@ -32,7 +32,8 @@ body.work-page {
     background: rgba(251, 249, 242, 0);
     backdrop-filter: blur(10px);
     z-index: 10000;
-    padding: 20px 0;
+    padding: 16px 56px 16px 24px;
+    box-sizing: border-box;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 0;
     will-change: max-width, padding, border-radius, background;
@@ -48,10 +49,10 @@ body.work-page {
     background: rgba(251, 249, 242, 0.4);
 }
 
-/* Scrolled navbar state - shrinks horizontally only */
+/* Scrolled navbar state - shrinks horizontally only (work page / work.html only) */
 .work-navbar.scrolled {
-    max-width: 750px;
-    padding: 20px 40px;
+    max-width: 900px;
+    padding: 20px 56px 20px 36px;
     border-radius: 50px;
     margin-top: 0;
     background: rgba(251, 249, 242, 0.4);
@@ -60,20 +61,21 @@ body.work-page {
 .work-nav-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0;
+    min-width: 0;
     position: relative;
-    transition: gap 0.3s ease, justify-content 0.3s ease;
+    gap: 12px 20px;
+    transition: gap 0.3s ease;
 }
-
 
 /* Shrink nav container when scrolled */
 .work-navbar.scrolled .work-nav-container {
-    gap: 25px;
-    padding-right: 50px;
+    gap: 8px 12px;
     max-width: none;
+    padding-right: 0;
 }
 
 .work-nav-back {
@@ -82,20 +84,16 @@ body.work-page {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
-    padding: 10px 0;
-    position: absolute;
-    left: 40px;
-    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease, left 0.3s ease;
+    padding: 8px 0;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
     cursor: pointer;
     display: inline-block;
+    align-self: center;
     visibility: visible;
     opacity: 1;
-}
-
-/* Adjust back button position when scrolled */
-.work-navbar.scrolled .work-nav-back,
-.work-navbar.visible .work-nav-back {
-    left: 0px;
 }
 
 .work-nav-back:hover {
@@ -132,18 +130,32 @@ body.work-page {
 
 .work-nav-links {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+}
+
+.work-nav-links::-webkit-scrollbar {
+    display: none;
 }
 
 .work-nav-link {
+    flex: 0 0 auto;
     text-decoration: none;
     color: #333;
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
-    padding: 10px 0;
+    padding: 8px 0;
     position: relative;
     transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
     cursor: pointer;
@@ -281,6 +293,10 @@ body.dark-mode.work-page .work-navbar.scrolled .dark-mode-toggle .moon-icon {
     right: 20px !important;
     transform: translateY(-50%) !important;
     z-index: 10001 !important;
+}
+
+.work-page .dark-mode-toggle:hover {
+    transform: translateY(-50%) scale(1.1) !important;
 }
 
 /* New container approach - use standard structure */
@@ -501,6 +517,25 @@ body.dark-mode.work-page .work-page-container section p {
 
 
 
+/* Subsection after final role (e.g. Why PM after Ergoworks) */
+.work-page-container .work-why-pm-subsection {
+    border-top: 1px solid #d0ccc0 !important;
+    margin-top: 28px !important;
+    padding-top: 28px !important;
+    padding-bottom: 20px !important;
+}
+
+body.dark-mode.work-page .work-page-container .work-why-pm-subsection {
+    border-top-color: #3d3d3d !important;
+}
+
+/* Alternating left margin for Why PM body (see screenshot) */
+.work-page-container .work-why-pm-subsection p.work-why-pm-indent {
+    padding-left: 1.75em !important;
+    margin-left: 0 !important;
+    box-sizing: border-box !important;
+}
+
 /* Remove unintended whitespace from hero when no background image */
 .work-page #work-hero {
     min-height: 0 !important;
@@ -546,9 +581,13 @@ body.dark-mode.work-page .work-page-container section p {
     }
     
     /* Responsive work navbar */
+    .work-navbar {
+        padding: 12px 48px 12px 16px;
+    }
+
     .work-nav-container {
-        padding: 0 30px;
         max-width: 100%;
+        padding: 0;
     }
     
     .work-nav-title {
