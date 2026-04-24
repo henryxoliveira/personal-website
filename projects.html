@@ -63,23 +63,27 @@
                         <h1 class="section-header"><a href="https://parkd.io" target="_blank" rel="noopener noreferrer">PARKD</a></h1>
                     </div>
                 </div>
-                <p>Parkd is a parking management platform that uses LPR built using OCR to allow schools to manage parking real estate remotely.</p>
+                <p>Parkd is a camera-first parking enforcement platform that uses OCR-based license plate recognition (LPR) to give schools real-time visibility and control over their parking operations</p>
+                <p>This removes the need for physical permits entirely, and streamlines the parking process for admin, faculty, students and guests</p>
+                <p>I&rsquo;m currently leading a team of 3 student engineers building Parkd from the ground up</p>
+                <p>A big part of my role has been turning this messy problem into something a small team can actually execute on.</p>
+                <p>I.e. defining the product vision, breaking complex challenges into milestones, and keeping engineering moving with clear priorities.</p>
+                <p>So I led our team as the architect behind a full multi-lot tracking system built on top of existing IP camera networks using RTSP stream ingestion. This involves:</p>
                 <ul>
-                    <li>Admin can manage vehicles across multiple lots with data collected from LPR cameras, cross-checked with a database on permit info</li>
-                    <li>Students, staff, and guests can view what lots on campus are available, and buy parking across lots without the need for physical permits</li>
+                    <li>Working closely with school admin, campus safety, and IT to define the problem, and map out the desired workflow into an executable roadmap for engineers</li>
+                    <li>Working closely with engineers to scope features into testable builds, prioritize tradeoffs, and keep momentum high across an early-stage student team</li>
                 </ul>
-                <p><strong>I'm currently leading a team of 3 student engineers to build Parkd</strong></p>
+                <p>So we came up with:</p>
                 <ul>
-                    <li>It is written mainly in JavaScript, with a React frontend and Node backend, making API calls to our AWS DynamoDB database of permits, student accounts</li>
-                    <li>I also designed our frontend on Figma, focusing on making the process as easy and intuitive as possible for all end users</li>
-                    <li>We host weekly team meetings and code reviews to ensure we hit our deadlines on time</li>
-                    <li>We also automate our CI/CD pipelines with GitHub and Docker, managing dev/staging/production branches
-                        <ul>
-                            <li>This allows for automated testing, reduced deployment time, ensuring zero-downtime rollouts, and A/B testing of new features.</li>
-                        </ul>
-                    </li>
-                    <li>We also take security very seriously with full SSO integration with the existing school infrastructure (via Auth0), and TLS encryption of APIs.</li>
+                    <li>License plate recognition pipeline to process live camera feeds with sub-3-second end-to-end latency, matching detected plates against a live permit database and triggering enforcement alerts in real time</li>
+                    <li>React + Vite admin dashboard backed by a Node/Express API layer, database infrastructure, and Redis caching for fast permit lookups and live system responsiveness</li>
+                    <li>Integrated Auth0 SSO to align with existing school identity systems, allowing secure admin access without disrupting current workflows</li>
+                    <li>Weekly engineering reviews, planning sessions, and brainstorming meetings to solve open-ended engineering problems such as entry/exit event modeling, lot occupancy tracking, duplicate detections, and partial plate reads</li>
+                    <li>CI/CD pipelines across dev, staging, and production using GitHub Actions and Docker, enabling faster releases, safer deployments, and isolated feature testing</li>
+                    <li>Admin and end-user flows in Figma, focusing on making guest pass purchases simple while giving enforcement staff clear, actionable live alerts</li>
                 </ul>
+                <p>What I&rsquo;ve enjoyed most about Parkd is that it sits at the intersection of engineering, product thinking, and leadership.</p>
+                <p>It&rsquo;s not just about writing code, it&rsquo;s about organizing people around a vision, making smart technical decisions, and building something that solves a real operational problem</p>
             </section>
 
             <!-- Threaded Nexus Project -->
