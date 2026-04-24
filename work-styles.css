@@ -84,7 +84,7 @@ body.work-page {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
-    padding: 8px 0;
+    padding: 10px 0;
     flex: 0 0 auto;
     white-space: nowrap;
     position: relative;
@@ -155,7 +155,7 @@ body.work-page {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
-    padding: 8px 0;
+    padding: 10px 0;
     position: relative;
     transition: color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
     cursor: pointer;
