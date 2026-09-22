@@ -65,9 +65,27 @@
                         <h1 class="section-header"><a href="https://github.blog/tag/github-advanced-security/" target="_blank" rel="noopener noreferrer">GITHUB</a></h1>
                         <p class="job-title">Product Management Intern | San Francisco, CA</p>
                     </div>
-                    <p class="duration">June 2026 - Present</p>
+                    <p class="duration">June 2026 - September 2026</p>
                 </div>
-                <p>I’ll be joining the Copilot Agents team this summer to help build AI-powered security detection and remediation (CodeQL, Copilot Autofix, GHAS) for software engineers</p>
+                <p>This past summer, I interned at GitHub as a Product Management intern within GitHub Advanced Security (GHAS), their security products org</p>
+                <ul>
+                    <li>They recently announced LLM-based Code Security products that work on top of CodeQL, their existing static analysis engine</li>
+                    <li>I took ownership of the evaluation strategy, focusing on accurately evaluating how well our models find vulnerabilities in code</li>
+                </ul>
+                <p>This is easier said than done. LLMs have many common pitfalls when it comes to finding vulnerabilities within code</p>
+                <ul>
+                    <li>Issues like training contamination or false positives challenge the accuracy of evaluations, and we needed to make sure we took this into account during evals</li>
+                    <li>Building the evaluation framework meant running LLM-based assessments across an internal corpus of real code, benchmarking detection and remediation quality against existing tooling like CodeQL</li>
+                    <li>Many companies are investing in this space, and these competitors were putting out marketing showing shallow evaluations with questionable accuracy</li>
+                </ul>
+                <p>We needed a base evaluation strategy define both our internal narrative (metrics to shoot for as we build and refine this tool), and external (how to we communicate our tool is the best to customers)</p>
+                <ul>
+                    <li>I quickly got up to speed via conversations with engineers and AI/security researchers already deep in the product</li>
+                    <li>I met with many enterprise AppSec teams to understand how security-conscious organizations actually evaluate and trust AI-driven tooling before they let it near production code</li>
+                    <li>I researched what competitors were putting out to get an understanding of their narrative, and how GitHub can differentiate</li>
+                    <li>I also researched as much data as possible from internal data warehousing + our evaluations of models across our corpus to pressure test and support our thesis on this</li>
+                </ul>
+                <p>By the end of the summer, that work turned into an external-facing security blog post. Something we can share with customers that detail how GitHub is on top of the vulnerability scanning space</p>
             </section>
 
             <!-- Software Engineer & Co-Founder - Parkd -->
