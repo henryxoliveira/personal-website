@@ -961,6 +961,21 @@ footer::before {
     transform: translateX(4px);
 }
 
+.resume-link-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 64px;
+    margin-top: 20px;
+}
+
+.resume-link-row .see-more-button {
+    margin: 0;
+    left: auto;
+    transform: none;
+    text-align: left;
+}
+
 /* Active nav link for subpages */
 .nav-link.active {
     color: #000;
@@ -1130,6 +1145,16 @@ footer::before {
         font-size: 16px;
         padding: 12px 0;
         margin: 15px auto 0 auto;
+    }
+
+    .resume-link-row {
+        flex-wrap: wrap;
+        gap: 8px 32px;
+    }
+
+    .resume-link-row .see-more-button {
+        margin: 0;
+        font-size: 14px;
     }
     
     /* Subpage mobile adjustments */
